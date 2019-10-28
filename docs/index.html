@@ -12,8 +12,11 @@
     <div class="col-md-10">
         <div id="mycanvas"></div>
         <div class="row">
-            <div class="col-xs-12" id="editorsplace">
+            <div class="col-xs-6" id="editorsplace">
                 <div id="editor" style="border: 1px solid black"></div>
+            </div>
+            <div class="col-xs-4">
+                <pre id="output" class="text-left"></pre>
             </div>
         </div>
         <div class="col-md-5"></div>
@@ -29,13 +32,15 @@
         editor.clearSelection();
 
         function fillEditor() {
-            return "###\n#Input user code\n###";
+            let text = "def function():\n\tpass";
+            return text;
         }
     </script>
     <script>
         document.getElementById("editor").style['width'] = document.getElementById("editorsplace").offsetWidth;
         document.getElementById("editor").style['height'] = 0.7 * window.innerHeight;
         document.getElementById("editor").style['margin'] = "0 auto";
+        document.getElementById("output").style['height'] = 0.7 * window.innerHeight;
     </script>
     <script>
         var basePath = 'https://cdn.rawgit.com/Petlja/pygame4skulpt/3435847b/pygame/';
@@ -141,6 +146,17 @@
             });
         };
 
+        function printString(text) {
+            var output = document.getElementById("output");
+            text = text.replace(/</g, '&lt;');
+            output.innerHTML = output.innerHTML + text;
+        }
+
+        function clearOutput() {
+            var output = document.getElementById("output");
+            output.innerHTML = '';
+        }
+
         function builtinRead(x) {
             if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
                 throw "File not found: '" + x + "'";
@@ -226,7 +242,7 @@
         }
 
         (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
-        Sk.configure({read: builtinRead});
+        Sk.configure({read: builtinRead, output: printString});
         $("#runbutton").click(function () {
             runCode();
         });
