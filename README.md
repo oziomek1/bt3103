@@ -6,7 +6,7 @@
 
 
 ### Running lambda:
-[https://3x7o2gvbkg.execute-api.us-east-1.amazonaws.com/default/final_lambda_bt3013][https://3x7o2gvbkg.execute-api.us-east-1.amazonaws.com/default/final_lambda_bt3013]
+[https://3x7o2gvbkg.execute-api.us-east-1.amazonaws.com/default/final_lambda_bt3013](https://3x7o2gvbkg.execute-api.us-east-1.amazonaws.com/default/final_lambda_bt3013)
 
 
 ### Running github-page with pygame code
