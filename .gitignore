@@ -1,0 +1,5 @@
+node_modules
+lambdaFunc.zip
+.DS_Store
+__pycache__
+*.whl

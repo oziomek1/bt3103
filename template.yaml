@@ -1,0 +1,60 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: AWS API Gateway with a Lambda Integration
+Parameters:
+  LambdaFuncName:
+    Type: String
+    Default: "pythonTest"
+  LambdaRuntime:
+    Type: String
+    Default: "python3.7"
+  LambdaHandler:
+    Type: String
+    Default: "index.lambda_handler"
+  LambdaMemory:
+    Type: Number
+    Default: 128
+  LambdaTimeout:
+    Type: Number
+    Default: 40
+Resources:
+  FunctionRole:
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action:
+              - sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+        - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
+      Path: /
+    Type: AWS::IAM::Role
+  LambdaFunc:
+    Properties:
+      CodeUri: ./lambda-deploy.zip
+      Description: Vue Testing Suite
+      FunctionName:
+        Ref: "LambdaFuncName"
+      Events:
+        ExecuteFunc:
+          Properties:
+            Method: any
+            Path: /
+          Type: Api
+      Handler:
+        Ref: "LambdaHandler"
+      MemorySize:
+        Ref: "LambdaMemory"
+      Role:
+        Fn::GetAtt:
+          - FunctionRole
+          - Arn
+      Runtime:
+        Ref: "LambdaRuntime"
+      Timeout:
+        Ref: "LambdaTimeout"
+    Type: AWS::Serverless::Function
