@@ -1,0 +1,12 @@
+Let's start by creating the Square Class
+
+As the name implies, the Square class will create squares on the display. This square class will be the blueprint to the snacks, the snake itself, and the boundaries we draw 
+the screen. Without this Square class, there is nothing on the screen. The Square class is also a parent class. Later, we'll go over how subsequent classes will inherit Square.
+
+Basic skeleton of a class "Square":
+
+class Square():
+    def __init__(self, cell_size,x_position,y_position):
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
