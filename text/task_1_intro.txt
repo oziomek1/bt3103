@@ -1,4 +1,4 @@
-Class Square 
+** Class Square ** 
 Let's start by creating the Square Class, the basis of everything in the Snake game. 
 * As the name implies, the Square class will create squares on the display. 
 * This square class will be the blueprint to the snacks, the snake itself, and the boundaries we draw on the screen. Without this Square class, there is nothing on the screen. 

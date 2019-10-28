@@ -206,7 +206,7 @@
             {
               name: 'Task 1', 
               content: {
-                topic: 'Class creation - Square class',
+                topic: 'Square Class',
                 topicDescription: null,
                 taskDescription: null,
                 userInput: defaultInput(),
@@ -215,35 +215,24 @@
               },
             },
             {
-              name: 'Task 1', 
+              name: 'Task 2', 
               content: {
-                topic: 'Inheritance',
-                topicDescription: 'Inheritance is a...',
-                taskDescription: 'You\'re task is to...',
+                topic: 'Cell Class',
+                topicDescription: null,
+                taskDescription: null,
                 userInput: defaultInput(),
                 taskId: '2',
                 output: false
               },
             },
             {
-              name: 'Task 2', 
-              content: {
-                topic: 'Polymorphism',
-                topicDescription: 'Polymorphism is a...',
-                taskDescription: 'You\'re task is to...',
-                userInput: defaultInput(),
-                taskId: '3',
-                output: false
-              },
-            },
-            {
               name: 'Task 3', 
               content: {
-                topic: 'Encapsulation',
-                topicDescription: 'Encapsulation is a...',
-                taskDescription: 'You\'re task is to...',
+                topic: 'Snake Class',
+                topicDescription: null,
+                taskDescription: null,
                 userInput: defaultInput(),
-                taskId: '4',
+                taskId: '3',
                 output: false
               }
             },
@@ -268,6 +257,18 @@
           });
           this.fetchText($vm.base_github_url + 'task_1_task.txt').then(function(result) {
             $vm.tasks[0].content.taskDescription = result;
+          });
+          this.fetchText($vm.base_github_url + 'task_2_intro.txt').then(function(result) {
+            $vm.tasks[1].content.topicDescription = result;
+          });
+          this.fetchText($vm.base_github_url + 'task_2_task.txt').then(function(result) {
+            $vm.tasks[1].content.taskDescription = result;
+          });
+          this.fetchText($vm.base_github_url + 'task_3_intro.txt').then(function(result) {
+            $vm.tasks[2].content.taskDescription = result;
+          });
+          this.fetchText($vm.base_github_url + 'task_3_task.txt').then(function(result) {
+            $vm.tasks[2].content.taskDescription = result;
           });
         },
         methods: {

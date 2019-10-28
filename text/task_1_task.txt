@@ -1,6 +1,6 @@
 Instructions:
 
 * We'll first give you the name of class Square
-* Class Square has a cell_size, x_position, and y_position that are equal to themselves.
+* Class Square has a cell_size, x_position, and y_position that are equal to themselves.    
 * There are no methods in class Square
 * HINT: check the testing code if you are confused. Do not forget when you are creating properties of the code, add self. before each variable
