@@ -14,18 +14,8 @@ rm -f lambda-deploy-overlay.tgz
 # Move to src directory 
 cd src
 
-echo 
-echo "***************************"
-echo "*****NPM INSTALL***********"
-echo "***************************"
-
-# npm install node modules
-if npm install
-then 
-    echo "$(tput setaf 2)npm successfully installed$(tput sgr 0)"
-else
-    echo "$(tput setaf 2)**********ERROR***********$(tput sgr 0)"
-fi
+# Install python packages needed
+python3 -m pip install --target=./ pytest-json-report --upgrade
 
 # zip project contents
 zip -qr ../lambda-deploy.zip *
@@ -68,4 +58,3 @@ fi
 
     
 exit 0 
-
