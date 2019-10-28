@@ -41,6 +41,28 @@
           </ul>
         </div>
       </nav>
+      <br>
+      <h3 style="text-align:center;"> Navigate Between Tasks:</h3>
+      <nav>
+        <ul class="pagination justify-content-center">
+        <li v-bind:class="{ disabled: isFirst(currentPage) }" class="page-item">
+          <span @click="currentPage -= 1" class="page-link"> << </span>
+        </li>
+        <span v-for="(task, taskIndex) in tasks">
+          <li class="page-item active" v-if="isCurrent(taskIndex + 1)">
+            <span @click="currentPage=taskIndex + 1" class="page-link">Task {{taskIndex + 1}}</span>
+          </li>
+          <li class="page-item" v-else>
+            <span @click="currentPage=taskIndex + 1" class="page-link">Task {{taskIndex + 1}}</span>
+          </li>
+        </span>
+        <li v-bind:class="{ disabled: isLast(currentPage) }" class="page-item">
+          <span @click="currentPage += 1" class="page-link"> >> </span>
+        </li>
+        </ul>
+      </nav>
+
+      <h4 style="text-align:center;">Tasks Progress:</h4>
 
       <div v-if="is_course">
         <nav clas="completion-navbar">
@@ -58,7 +80,7 @@
           </span>
           </ul>
         </nav>
-  
+        <hr>
         <div v-for="(task, taskIndex) in tasks" v-if="taskIndex === currentPage - 1" class="container col-8 text-center p-5">
           <div class="card border-dark text-white bg-primary-dark">
             <h5 class="card-header">{{ task.content.topic }} </h5>
@@ -88,24 +110,6 @@
           </div>
         </div>
 
-        <nav>
-          <ul class="pagination justify-content-center">
-          <li v-bind:class="{ disabled: isFirst(currentPage) }" class="page-item">
-            <span @click="currentPage -= 1" class="page-link">Previous</span>
-          </li>
-          <span v-for="(task, taskIndex) in tasks">
-            <li class="page-item active" v-if="isCurrent(taskIndex + 1)">
-              <span @click="currentPage=taskIndex + 1" class="page-link">{{taskIndex + 1}}</span>
-            </li>
-            <li class="page-item" v-else>
-              <span @click="currentPage=taskIndex + 1" class="page-link">{{taskIndex + 1}}</span>
-            </li>
-          </span>
-          <li v-bind:class="{ disabled: isLast(currentPage) }" class="page-item">
-            <span @click="currentPage += 1" class="page-link">Next</span>
-          </li>
-          </ul>
-        </nav>
       </div>
       <div class="container" v-else>
         <p class="text-center">PyGame interactive example</p>
