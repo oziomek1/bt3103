@@ -12,11 +12,8 @@
     <div class="col-md-10">
         <div id="mycanvas"></div>
         <div class="row">
-            <div class="col-xs-6" id="editorsplace">
+            <div class="col-xs-12" id="editorsplace">
                 <div id="editor" style="border: 1px solid black"></div>
-            </div>
-            <div class="col-xs-4">
-                <pre id="output" class="text-left"></pre>
             </div>
         </div>
         <div class="col-md-5"></div>
@@ -25,22 +22,28 @@
     <div class="col-md-2"></div>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js" type="text/javascript" charset="utf-8"></script>
     <script>
+        let editorValue = await fillEditor();
+        console.log('eV', editorValue);
         var editor = ace.edit("editor");
         editor.setTheme("ace/theme/chrome");
         editor.session.setMode("ace/mode/python");
-        editor.setValue(fillEditor());
+        editor.setValue(editorValue);
         editor.clearSelection();
 
-        function fillEditor() {
-            let text = "def function():\n\tpass";
-            return text;
+        async function fillEditor() {
+            let response = await fetch('https://raw.githubusercontent.com/oziomek1/bt3103/master/example_snake.py');
+            let value = null;
+            if (response.ok) {
+              const resp = await response.text();
+              value = resp;
+            }
+            return value;
         }
     </script>
     <script>
         document.getElementById("editor").style['width'] = document.getElementById("editorsplace").offsetWidth;
         document.getElementById("editor").style['height'] = 0.7 * window.innerHeight;
         document.getElementById("editor").style['margin'] = "0 auto";
-        document.getElementById("output").style['height'] = 0.7 * window.innerHeight;
     </script>
     <script>
         var basePath = 'https://cdn.rawgit.com/Petlja/pygame4skulpt/3435847b/pygame/';
@@ -146,17 +149,6 @@
             });
         };
 
-        function printString(text) {
-            var output = document.getElementById("output");
-            text = text.replace(/</g, '&lt;');
-            output.innerHTML = output.innerHTML + text;
-        }
-
-        function clearOutput() {
-            var output = document.getElementById("output");
-            output.innerHTML = '';
-        }
-
         function builtinRead(x) {
             if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
                 throw "File not found: '" + x + "'";
@@ -242,7 +234,7 @@
         }
 
         (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
-        Sk.configure({read: builtinRead, output: printString});
+        Sk.configure({read: builtinRead});
         $("#runbutton").click(function () {
             runCode();
         });
