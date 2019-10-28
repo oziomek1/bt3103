@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slithering through OOP with PyGame</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.css" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147552064-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-147552064-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="app">
+      <h2 class="text-center headline">Slithering through OOP with PyGame</h3>
+      <h5 class="text-center headline">by Team Infinity</h3>
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active" v-if="is_home">
+              <a class="nav-link">Home</a>
+            </li>
+            <li class="nav-item" v-else>
+              <a class="nav-link" @click="is_home=true, is_course=false">Home</a>
+            </li>
+            <li class="nav-item active" v-if="is_course">
+              <a class="nav-link">Course</a>
+            </li>
+            <li class="nav-item" v-else>
+              <a class="nav-link" @click="is_home=false, is_course=true">Course</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div v-if="is_course">
+        <nav clas="completion-navbar">
+          <ul class="pagination justify-content-center">
+          <span v-for="(task, taskIndex) in tasks">
+            <li class="completion" v-if="isCurrent(taskIndex + 1)">
+              <button type="button" class="btn btn-primary bg-primary-dark">{{taskIndex + 1}}</button>
+            </li>
+            <li class="completion" v-else-if="task.content.output">
+              <button type="button" class="btn btn-success bg-success-dark">{{taskIndex + 1}}</button>
+            </li>
+            <li class="completion" v-else>
+              <button type="button" class="btn btn-danger bg-danger-dark">{{taskIndex + 1}}</button>
+            </li>
+          </span>
+          </ul>
+        </nav>
+  
+        <div v-for="(task, taskIndex) in tasks" v-if="taskIndex === currentPage - 1" class="container col-8 text-center p-5">
+          <div class="card border-dark text-white bg-primary-dark">
+            <h5 class="card-header">{{ task.content.topic }} </h5>
+            <div class="card-body">
+              <p class="card-text preserve-formatting-text" >{{ task.content.topicDescription }}</p>
+            </div>
+          </div>
+          <div class="m-3"></div>
+
+          <div class="card border-dark text-white bg-primary-dark-2">
+            <h5 class="card-header text-center">{{ task.name }}</h5>
+            <div class="card-body">
+              <p class="card-text preserve-formatting-text">{{ task.content.taskDescription }}</p>
+            </div>
+          </div>
+          <div class="m-3"></div>
+  
+          <course-component v-bind:value=task.content v-bind:task-id=task.content.taskId @handler="evaluateCode"></course-component>
+          
+          <div class="m-3"></div>
+  
+          <div class="alert alert-success task-passed" role="alert" v-if="showPassedTaskAlerts[taskIndex]">
+            Task passed!
+          </div>
+          <div class="alert alert-danger task-failed" role="alert" v-if="showFailedTaskAlerts[taskIndex]">
+            Task failed! Please try again.
+          </div>
+        </div>
+
+        <nav>
+          <ul class="pagination justify-content-center">
+          <li v-bind:class="{ disabled: isFirst(currentPage) }" class="page-item">
+            <span @click="currentPage -= 1" class="page-link">Previous</span>
+          </li>
+          <span v-for="(task, taskIndex) in tasks">
+            <li class="page-item active" v-if="isCurrent(taskIndex + 1)">
+              <span @click="currentPage=taskIndex + 1" class="page-link">{{taskIndex + 1}}</span>
+            </li>
+            <li class="page-item" v-else>
+              <span @click="currentPage=taskIndex + 1" class="page-link">{{taskIndex + 1}}</span>
+            </li>
+          </span>
+          <li v-bind:class="{ disabled: isLast(currentPage) }" class="page-item">
+            <span @click="currentPage += 1" class="page-link">Next</span>
+          </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="container" v-else>
+        <p class="text-center">PyGame example</p>
+        <p align="center">
+          <iframe src='https://oziomek1.github.io/bt3103/' width="100%" height="800" style="border:none;"></iframe>
+        </p>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/python/python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-codemirror@4.0.6/dist/vue-codemirror.min.js"></script>
+    <script>
+      Vue.use(window.VueCodemirror)
+      var myComponent = Vue.component('course-component', {
+        props: ['value', 'taskId'],
+        data: function() {
+          return {
+            cmOptions: {
+              lineNumbers: true,
+              readOnly: false,
+              tabMode: "indent",
+              matchBrackets: true,
+              indentUnit: 4,
+              mode: 'python',
+            },
+            answer: '',
+            content: this.value
+          }
+        },
+        methods: {
+          executeCode: function(code) {
+            let post_body = {
+              "userToken": "EXTERNAL", 
+              "editable": { "0": this.content.userInput },
+              "hidden": { "0": this.content.taskId },
+              "shown": { "0": '' }
+            }
+            console.log(JSON.stringify(post_body))
+            fetch('https://3x7o2gvbkg.execute-api.us-east-1.amazonaws.com/default/final_lambda_bt3013', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Origin" : "*",
+                "Access-Control-Allow-Credentials" : true
+              },
+              mode: 'no-cors',
+              body: JSON.stringify(post_body)
+            }).then(response => {
+              console.log(response);
+              return response.text().then(function (text) {
+                return text ? JSON.parse(text) : {}
+              })
+            }).then(data => {
+              this.result = JSON.parse(JSON.stringify(data))
+              console.log('data', data, this.value);
+              return this.$emit('handler',{data, taskId:this.taskId})
+            }).catch(function(err) {
+              console.log('Error', err);
+            })
+          },
+        },
+        template:
+          `<div class="component-input">
+             <div class="card border-dark text-white bg-primary-dark-3">
+              <h5 class="card-header text-center">Put your solution there:</h5>
+              <div class="card-body text-left">
+                <codemirror class="inputTextArea" v-model="content.userInput" :options="cmOptions"></codemirror>
+              </div>
+            </div>
+
+            <br/>
+            <button @click="executeCode(content.userInput)" id="submit" class="btn btn-primary">Submit solution</button>
+          </div>`
+      });
+
+      new Vue({
+        el: "#app",
+        data: {
+          tasks: [
+            {
+              name: 'Task 1', 
+              content: {
+                topic: 'Class creation - Square class',
+                topicDescription: null,
+                taskDescription: null,
+                userInput: defaultInput(),
+                taskId: '1',
+                output: false
+              },
+            },
+            {
+              name: 'Task 1', 
+              content: {
+                topic: 'Inheritance',
+                topicDescription: 'Inheritance is a...',
+                taskDescription: 'You\'re task is to...',
+                userInput: defaultInput(),
+                taskId: '2',
+                output: false
+              },
+            },
+            {
+              name: 'Task 2', 
+              content: {
+                topic: 'Polymorphism',
+                topicDescription: 'Polymorphism is a...',
+                taskDescription: 'You\'re task is to...',
+                userInput: defaultInput(),
+                taskId: '3',
+                output: false
+              },
+            },
+            {
+              name: 'Task 3', 
+              content: {
+                topic: 'Encapsulation',
+                topicDescription: 'Encapsulation is a...',
+                taskDescription: 'You\'re task is to...',
+                userInput: defaultInput(),
+                taskId: '4',
+                output: false
+              }
+            },
+          ],
+          result: '',
+          currentPage: 1,
+          completePages: [],
+          pages: [...Array(5).keys()].slice(1),
+          base_github_url: 'https://raw.githubusercontent.com/oziomek1/bt3103/master/text/',
+          showPassedTaskAlerts: new Array(5).fill(false),
+          showFailedTaskAlerts: new Array(5).fill(false),
+          is_home: false,
+          is_course: true,
+        },
+        components: {
+          myComponent: myComponent,
+        },
+        mounted () {
+          let $vm = this;
+          this.fetchText($vm.base_github_url + 'task_1_intro.txt').then(function(result) {
+            $vm.tasks[0].content.topicDescription = result;
+          });
+          this.fetchText($vm.base_github_url + 'task_1_task.txt').then(function(result) {
+            $vm.tasks[0].content.taskDescription = result;
+          });
+        },
+        methods: {
+          isComplete: function(page) {
+            return this.completePages.includes(page);
+          },
+          isCurrent: function(page) {
+            return this.currentPage === page;
+          },
+          isFirst: function(page) {
+            return page === 1;
+          },
+          isLast: function(page) {
+            return page === this.pages[this.pages.length - 1];
+          },
+          evaluateCode: function(response) {
+            let {data, taskId} = response;
+            console.log('evaluate:data', data);
+            console.log('evaluate:taskId', taskId);
+            this.tasks[taskId - 1].content.output = data.isComplete;
+            console.log(this.tasks[taskId - 1].content.output);
+            if (this.tasks[taskId - 1].content.output === true) {
+              Vue.set(this.showPassedTaskAlerts, taskId - 1, true);
+              Vue.set(this.showFailedTaskAlerts, taskId - 1, false);
+            } else {
+              Vue.set(this.showPassedTaskAlerts, taskId - 1, false);
+              Vue.set(this.showFailedTaskAlerts, taskId - 1, true);         
+            }
+          },
+          async fetchText(url) {
+            let response = await fetch('https://raw.githubusercontent.com/oziomek1/bt3103/master/text/task_1_intro.txt');
+            let value = null;
+            if (response.ok) {
+              const resp = await response.text();
+              value = resp;
+            }
+            return value; 
+          }
+        }
+      });
+
+
+      function defaultInput() {
+        return '"""\nInput your code here:\n"""';
+      }
+
+    </script>
+  </body>
+
+<style type="text/css">
+
+body {
+  background-color: #f2f2f2;
+}
+
+.headline {
+  color: #00254d;
+}
+
+.bg-primary-dark {
+  background-color: #003166;
+}
+
+.bg-primary-dark-2 {
+  background-color: #004a99;
+}
+
+.bg-primary-dark-3 {
+  background-color: #0063cc;
+}
+
+.bg-danger-dark {
+  background-color: #991a27;
+}
+
+.bg-success-dark {
+  background-color: #23903a;
+}
+
+.bg-bootstrap-danger {
+  background-color: #dc3445;
+}
+
+.bg-bootstrap-success {
+  background-color: #28a744;
+}
+
+.execute {
+  background-color: #013e7f;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.preserve-formatting-text {
+    white-space: pre-wrap;
+    text-align: left;
+}
+
+li.completion {
+  margin: 0.5em;
+}
+
+</style>
+</html>
