@@ -41,41 +41,20 @@
           </ul>
         </div>
       </nav>
-      <br>
-      <h3 style="text-align:center;"> Navigate Between Tasks:</h3>
-      <nav>
-        <ul class="pagination justify-content-center">
-        <li v-bind:class="{ disabled: isFirst(currentPage) }" class="page-item">
-          <span @click="currentPage -= 1" class="page-link"> << </span>
-        </li>
-        <span v-for="(task, taskIndex) in tasks">
-          <li class="page-item active" v-if="isCurrent(taskIndex + 1)">
-            <span @click="currentPage=taskIndex + 1" class="page-link">Task {{taskIndex + 1}}</span>
-          </li>
-          <li class="page-item" v-else>
-            <span @click="currentPage=taskIndex + 1" class="page-link">Task {{taskIndex + 1}}</span>
-          </li>
-        </span>
-        <li v-bind:class="{ disabled: isLast(currentPage) }" class="page-item">
-          <span @click="currentPage += 1" class="page-link"> >> </span>
-        </li>
-        </ul>
-      </nav>
-
-      <h4 style="text-align:center;">Tasks Progress:</h4>
-
       <div v-if="is_course">
+        <br>
+        <h4 style="text-align:center;">Tasks Progress:</h4>
         <nav clas="completion-navbar">
           <ul class="pagination justify-content-center">
           <span v-for="(task, taskIndex) in tasks">
             <li class="completion" v-if="isCurrent(taskIndex + 1)">
-              <button type="button" class="btn btn-primary bg-primary-dark">{{taskIndex + 1}}</button>
+              <button type="button" class="btn btn-primary bg-primary-dark" @click="currentPage=taskIndex + 1">{{taskIndex + 1}}</button>
             </li>
             <li class="completion" v-else-if="task.content.output">
-              <button type="button" class="btn btn-success bg-success-dark">{{taskIndex + 1}}</button>
+              <button type="button" class="btn btn-success bg-success-dark"  @click="currentPage=taskIndex + 1" class="page-link">{{taskIndex + 1}}</button>
             </li>
             <li class="completion" v-else>
-              <button type="button" class="btn btn-danger bg-danger-dark">{{taskIndex + 1}}</button>
+              <button type="button" class="btn btn-danger bg-danger-dark"  @click="currentPage=taskIndex + 1" class="page-link">{{taskIndex + 1}}</button>
             </li>
           </span>
           </ul>
@@ -108,6 +87,24 @@
           <div class="alert alert-danger task-failed" role="alert" v-if="showFailedTaskAlerts[taskIndex]">
             Task failed! Please try again.
           </div>
+          <nav>
+              <ul class="pagination justify-content-center">
+              <li v-bind:class="{ disabled: isFirst(currentPage) }" class="page-item">
+                <span @click="currentPage -= 1" class="page-link"> << </span>
+              </li>
+              <span v-for="(task, taskIndex) in tasks">
+                <li class="page-item active" v-if="isCurrent(taskIndex + 1)">
+                  <span @click="currentPage=taskIndex + 1" class="page-link">Task {{taskIndex + 1}}</span>
+                </li>
+                <li class="page-item" v-else>
+                  <span @click="currentPage=taskIndex + 1" class="page-link">Task {{taskIndex + 1}}</span>
+                </li>
+              </span>
+              <li v-bind:class="{ disabled: isLast(currentPage) }" class="page-item">
+                <span @click="currentPage += 1" class="page-link"> >> </span>
+              </li>
+              </ul>
+            </nav>
         </div>
 
       </div>
