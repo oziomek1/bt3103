@@ -285,7 +285,7 @@
             }
           },
           async fetchText(url) {
-            let response = await fetch('https://raw.githubusercontent.com/oziomek1/bt3103/master/text/task_1_intro.txt');
+            let response = await fetch(url);
             let value = null;
             if (response.ok) {
               const resp = await response.text();
