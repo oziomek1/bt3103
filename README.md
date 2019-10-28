@@ -17,8 +17,8 @@
   - ##### [Running Github page with PyGame](https://oziomek1.github.io/bt3103/)
   - ##### [Example game source code to run](https://github.com/oziomek1/bt3103/blob/master/example_snake.py)
 * #### AWS Lambda:
- - ##### [Running AWS Lambda build with Github Actions](https://ykab5hzm96.execute-api.us-east-1.amazonaws.com/Prod/)
- - ##### [Source AWS Lambda](https://3x7o2gvbkg.execute-api.us-east-1.amazonaws.com/default/final_lambda_bt3013)
+  - ##### [Running AWS Lambda build with Github Actions](https://ykab5hzm96.execute-api.us-east-1.amazonaws.com/Prod/)
+  - ##### [Source AWS Lambda](https://3x7o2gvbkg.execute-api.us-east-1.amazonaws.com/default/final_lambda_bt3013)
 
 ## Images:
 * #### Main course page
