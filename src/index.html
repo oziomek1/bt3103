@@ -229,7 +229,7 @@
                 topic: 'Square Class',
                 topicDescription: null,
                 taskDescription: null,
-                userInput: defaultInput(),
+                userInput: null,
                 taskId: '1',
                 output: false
               },
@@ -290,6 +290,10 @@
           this.fetchText($vm.base_github_url + 'task_3_task.txt').then(function(result) {
             $vm.tasks[2].content.taskDescription = result;
           });
+          this.fetchText($vm.base_github_url + 'https://raw.githubusercontent.com/oziomek1/bt3103/master/example_solution.py').then(function(result) {
+            $vm.tasks[0].content.userInput = result;
+          });
+
         },
         methods: {
           isComplete: function(page) {
