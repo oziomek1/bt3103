@@ -25,12 +25,22 @@
         var editor = ace.edit("editor");
         editor.setTheme("ace/theme/chrome");
         editor.session.setMode("ace/mode/python");
-        editor.setValue(fillEditor());
-        editor.clearSelection();
 
-        function fillEditor() {
-            return "###\n#Input user code\n###";
+        function defaultInput() {
+            return '"""\nInput your code here:\n"""';
+          }
+        async function fillEditor() {
+            let response = await fetch('https://raw.githubusercontent.com/oziomek1/bt3103/master/example_snake.py');
+            let value = null;
+            if (response.ok) {
+                value = await response.text();
+            } else {
+                value = defaultInput();
+            }
+            editor.setValue(value);
+            editor.clearSelection();
         }
+        fillEditor();
     </script>
     <script>
         document.getElementById("editor").style['width'] = document.getElementById("editorsplace").offsetWidth;
