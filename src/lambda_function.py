@@ -5,7 +5,7 @@ def lambda_handler(event, context):
     is_correct = False
     status_code_ok = 200
 
-    def test_module(executable_module, task_id):
+    def test_executor(executable_module, task_id):
         if task_id == "1":
             try:
                 _field_value = 3
@@ -13,6 +13,47 @@ def lambda_handler(event, context):
                 assert testSquare.cell_size == _field_value, "Something is wrong with cell_size"
                 assert testSquare.x_position == _field_value, "Something is wrong with x_position"
                 assert testSquare.y_position == _field_value, "Something is wrong with y_position"
+            except:
+                return False
+            return True
+        elif task_id == "2":
+            try:
+                _cell_size = 30
+                testCell = executable_module.Cell()
+                assert testCell.cell_size == 30, "Your cell_size is incorrect"
+                assert testCell.color == (0, 0, 0), "Your color is incorrect"
+                assert testCell.display_window, "You did not create a display_window"
+            except:
+                return False
+            return True
+        elif task_id == "3":
+            try:
+                _length = 10
+                snake = executable_module.Snake(_length)
+                assert s.getLength() == 10, "You did not properly create the getLength method"
+            except:
+                return False
+            return True
+        elif task_id == "4":
+            try:
+                snake = executable_module.Snake()
+                snake.add_cell()
+                assert snake.length == 6, "You did not properly change the length increment of the snake"
+            except:
+                return False
+            return True
+        elif task_id == "5":
+            try:
+                test = executable_module.detailsOfGame()
+                assert test.show_menu() == "Showing menu", "You did not properly inherit/detail the abstract method show_menu"
+                assert test.start() == "Starting game!", "You did not properly inherit/detail the abstract method start"
+            except:
+                return False
+            return True
+        elif task_id == "6":
+            try:
+                snake = executable_module.badSnake()
+                assert snake.movement() == "I do not move at all", "You did not properly inherit the Snake class"
             except:
                 return False
             return True
@@ -32,7 +73,7 @@ def lambda_handler(event, context):
         result = False
         executable_module = execute_input(user_input)
         if executable_module is not None:
-            result = test_module(executable_module, task_id)
+            result = test_executor(executable_module, task_id)
         return result
 
     method = event.get('httpMethod',{})

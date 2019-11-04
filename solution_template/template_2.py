@@ -5,7 +5,8 @@ class Cell():  # we are omitting (Square) to make the code run smoothly
         color = ,  #RGB value for the color white
         x_position=None,
         y_position=None,
-        # DON'T FORGET TO ADD DISPLAY_WINDOW):
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        ):
  
         self.cell_size = cell_size
         self.x_position = x_position
