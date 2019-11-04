@@ -13,12 +13,20 @@ Basic skeleton of a class "Square":
 
 Line by line breakdown: 
 * In line 1, we use the keyword class to create a class 
+
 * In line 2, def __init___ is our instance attributes, what types of attributes will each Square have? 
+
 * We always start attributes with the keyword self, which refers to each specific instance of square. It helps keep track of all the attributes per each square instance. 
+
 * Each square class has a particular size (cell_size) and a location on the display (x_position, y_position) 
 * Lines 3 - 5 help define what each attribute should be
+
     self.cell_size refers to a particular instance of the square class. 
+
     So self.cell_size = cell_size means that for each instance of Square class, set cell size (self.cell_size) to whatever value is passed into the instance (cell_size). This is the same for both x_position and y_position
+
     For example, if I wanted to create a Square named s with a cell size of 15 and an x, y position of 0: 
-    s = Square(15, 0, 0). This is known as instantiation. S is an object, or an instance of the class Square. 
+
+    s = Square(15, 0, 0). This is known as instantiation. S is an object, or an instance of the class Square
+    
     Values 15, 0, and 0 refers to the cell_size, x_position, and y_position respectively. And all those three values will be set to the attributes of object s (which is what self.cell_size, self.x_position, self.y_position is).

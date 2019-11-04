@@ -1,0 +1,12 @@
+** Instructions: **
+* Create the def go_up(self): method
+* Remember the y_vector deals with vertical movement. So check whether or not the snake is already moving up before changing its direction 
+* Change the y_vector value to 10 after checking whether or not the snake is already moving up and set the x_vector to 0
+* HINT: please check the example codes for the other go methods. Remember, the x vector refers to moving horizontally while the y_vector refers to moving vertically. Vectors can be negative   as well.
+
+** Example ** 
+def go_up(self):
+    if self.y_vector > 0:
+        return “Going Up”
+    self.y_vector = 10
+    self.x_vector = 0

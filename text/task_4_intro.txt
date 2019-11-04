@@ -1,0 +1,33 @@
+Time for a tricky, yet important part of our game: the def add_cell method. This method is called every time our snake eats a snack.
+
+
+class Snake():
+...
+...*instance attributes*
+...
+    def add_cell(self):
+        self.cells.append(
+            Cell(cell_size=self.cell_size, x_position=self.cells[-1].x_position, y_position=self.cells[-1].y_position, color=self.color)
+        self.length += 1 
+
+Let us break down this code. First, recall our Cell class and its instance attributes:
+
+class Cell():
+    def __init__(self,cell_size=20,color=(255, 255, 255),x_position=None,y_position=None):
+ 
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+
+As you can see in def add_cell, the code actually creates instances of class Cell and defines its new properties. It then adds each new instance of class Cell to the cells list, aka increases the length of the snake
+
+Here is how the code defines the newly added Cell properties:
+
+* The new Cell cell_size will be the cell size of the snake (self.cell_size)
+
+* The new Cell location (x and y position) will be placed right after the last part of the snake. Using self.cells[-1].x/y_position helps the code locate where the snake currently is and where to add the new part of the snake.
+
+* The new Cell color will be the color of the snake (self.color)
+
+Finally, self.length += 1 keeps track of how long the length of the snake is. Once the game ends, the length of the snake will be used to display the score.

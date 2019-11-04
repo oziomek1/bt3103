@@ -1,0 +1,7 @@
+Instructions:
+
+* Create another type of snake class named badSnake that inherits the Snake class.
+
+* Override the def movement method to say "I do not move at all"
+
+* HINT: Remember, you must include the class name you want to inherit in the child class parameters.

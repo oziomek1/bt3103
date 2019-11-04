@@ -29,6 +29,9 @@ Basic skeleton of a cell class:
 
 Line by line breakdown: 
 * In line 1, class Cell(Square) means that class Cell inherited properties and methods from class Square
-* In lines 3-7, we can see those inherited instance attributes from class Square in class Cell. The only difference is that we are now defining what the default cell size, color, and x/       y_position should be for all instances of class Cell. We can always change these values later when we create instances of the class Cell. 
+
+* In lines 3-7, we can see those inherited instance attributes from class Square in class Cell. The only difference is that we are now defining what the default cell size, color, and x/y_position should be for all instances of class Cell. We can always change these values later when we create instances of the class Cell. 
+
 * Line 8 is a new instance attribute specific to the class Cell. display_window refers to the width and height of the game display. We won’t go how that works specifically, as it’s not that 
-* Lines 16-20 define a new method for class Cell, def draw(self). Essentially when the code calls the draw method from the Cell class, it will draw a cell. The dimensions and size used are    defined in lines 3-7. 
+
+* Lines 16-20 define a new method for class Cell, def draw(self). Essentially when the code calls the draw method from the Cell class, it will draw a cell. The dimensions and size used are defined in lines 3-7. 

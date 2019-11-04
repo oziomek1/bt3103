@@ -1,0 +1,126 @@
+Congratulations! You have made the main components of the snake game.
+
+We will now put it all together so that you can play what you have created!
+
+Let us go over how this will happen through another key component of OOP, abstraction.
+
+To explain this concept, think of a car. A driver only needs to know how to steer it, when to accelerate, or when to hit the brakes. They do not need to know what goes on inside the car or how the car functions to drive it.
+
+Essentially, abstraction means hiding the complex code behind a class or its methods and only showing the essential parts of it to users. In the context of the game, abstraction looks like this:
+
+from abc import ABC, abstractmethod
+ 
+class playGame(ABC):
+ 
+    @abstractmethod
+    def show_menu(self):
+        pass 
+ 
+    @abstractmethod
+    def start(self):
+        pass 
+
+What is going on here?
+
+* This is an abstract class that will allow us to play our snake game.
+
+* Abstraction allows us to create an outline of what we want the game to do and then later add the details in a separate subclass. That way, it will keep our code nice and neat.
+
+* In this case, we know that we need a menu screen and a way to start the game, hence the methods defined above.
+
+* However, we do not know how exactly to code the methods right now, so for now we just define the methods we need the game to run.
+
+In coding terms:
+
+* The first line is importing certain keywords we can use from the abc (abstract class) library: ABC and abstractmethod
+
+* In order to make an abstract class, we must pass ABC in its parameters.
+
+* For every abstract method in the abstract class, we must put @abstractmethod before we define them.
+
+* Pass allows us to put something in place of the abstract methods that we will later replace with more code.
+
+So how do we add the details (implementation)?
+
+* We inherit these abstract classes into subclasses. Here, we can now code out the details of the abstract methods.
+
+* We will now show you what the details of show_menu and start are.
+
+* You do not need to understand the exact details of these methods.
+
+* All that you need to know is that def show_menu displays a menu with a play and quit button, and def start checks if the snake eats a snack, adds length, or dies. It implements all of the classes and methods you have created before:
+
+class detailsOfGame(playGame):
+ 
+    def show_menu(self):
+        self.clock.tick(self.fps)
+        button_play_x = self.window_width // 5
+        button_play_y = 2 * self.window_height // 3
+        button_quit_x = self.window_width - 2 * self.window_width // 5
+        button_quit_y = 2 * self.window_height // 3
+        button_width = self.window_width // 5
+        button_height = self.window_height // 5
+        while True:
+            time.sleep(0.001)
+            click_position = self.catch_menu_event()
+            if click_position:
+                if button_play_y <= click_position[1] <= button_play_y + button_height:
+                    if button_play_x <= click_position[0] <= button_play_x + button_width:
+                        break
+                    if button_quit_x <= click_position[0] <= button_quit_x + button_width:
+                        pg.quit()
+            self.display_window.fill(pg.Color('black'))
+            self.display_window.blit(self.font.render('Menu', False, pg.Color('gray')), (self.window_width // 2.5, self.window_height // 3))
+            pg.draw.rect(
+                self.display_window,
+                pg.Color('darkgreen'),
+                pg.Rect(button_play_x, button_play_y, button_width, button_height),
+            )
+            pg.draw.rect(
+                self.display_window,
+                pg.Color('darkred'),
+                pg.Rect(button_quit_x, button_quit_y, button_width, button_height),
+            )
+            self.display_window.blit(
+                self.font.render('Play', False, pg.Color('gray')),
+                (button_play_x + self.cell_size // 2, button_play_y + self.cell_size // 2),
+            )
+            self.display_window.blit(
+                self.font.render('Quit', False, pg.Color('gray')),
+                (button_quit_x + self.cell_size // 2, button_quit_y + self.cell_size // 2),
+            )
+            pg.display.update()
+ 
+  def start(self):
+        self.clock.tick(self.fps)
+        rate_counter = 0
+        while True:
+            time.sleep(0.001)
+            self.catch_event()
+            self.display_window.fill(pg.Color('black'))
+            self.draw()
+            pg.display.update()
+ 
+            if rate_counter % self.moving_rate == 0:
+                self.snake.move()
+                rate_counter = 0
+ 
+                self.check_collide()
+                if self.check_eat():
+                    self.snake.add_cell()
+                    self.snack.reassign()
+                    self.check_correct_snack_position()
+ 
+                if self.failed:
+                    self.draw_failure()
+                    self.reset()
+                    self.failed = False
+                    self.show_menu()
+            rate_counter += 1
+ 
+
+Important things to note:
+
+* You must detail/implement all the abstract methods defined in the abstract class in order to create objects of the subclass. Otherwise, it will still be an abstract class.
+
+* You cannot create instances/objects of abstract classes. If you want to, you must first create a subclass of the abstract class and implement its abstract methods. Then, you can create an object of the subclass.

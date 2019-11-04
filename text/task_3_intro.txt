@@ -1,56 +1,26 @@
-** Class Snake ** 
-* Congrats on getting the length of the snake! Now, we can use getLength to calculate our score :)
-* Let’s start to do more challenging tasks. We will now create the methods to control the snake. 
-* Let’s go over some variables and  methods you should understand before we proceed
+* Great job so far! Now to the fun part, creating the actual snake.
 
-** How our snake is displayed on the screen ** 
-Each individual bit of our snake is a Cell Object. These cell objects are stored in a list like so:
-1. def __init__(self,...):
-2.        ...
-3.        self.cells = [
-4.            Cell(cell_size=self.cell_size, x_position=x_position, y_position=y_position, color=self.color, display_window=self.display_window)
-5.       for i in range(length) ]
-* self.cells is a list creating instances of the class Cell. It will create as many cells as there are defined in length, hence the for loop. 
+* There are many instance attributes for our snake class, but we will only focus on the important ones.
 
-Def move defines how the snake moves along the screen. The method uses the cells list.
-1. def move(self):
-2.        x_position_new, y_position_new = self.calculate_new_cell_positions()
-3. 
-4.        self.cells.pop()
-5.        self.cells.insert(0,
-6.            Cell(cell_size=self.cell_size, x_position=x_position_new, y_position=y_position_new, color=self.color, display_window=self.display_window),
-7.        )
+* We will start with the length and getLength method
 
-* x_position_new, y_position_new = self.calculate_new_cell_positions() calls another method, which we won’t show because it is too complicated and unnecessary to know, to return new (x, y)    coordinates of the snake. 
-* x_position_new, y_position_new = self.calculate_new_cell_positions() calls another method, which we won’t show because it is too complicated and unnecessary to know, to return new (x, y)    coordinates of the snake. 
-* In coding terms: self.cells.pop() and self.cells.insert() moves the last element to the front of the cells list. 
+class Snake():
+    def __init__(self, ... length....):
+        ...
+        self.length = length
+        ...
+        ]
+    def getLength(self):
+        return self.length
 
-**Methods**
-* x_vector and y_vector refer to what the vertical and horizontal speed of the snake are.
-* Remember, vectors can be negative. Negative x and y vectors refer moving left and down respectively 
+The length attribute defines how long our snake will be when starting the game. Later, we will be modifying length to keep track of the score
 
-The snake can move in four directions. In this exercise, we will give you three directions and you will be responsible for coding the last one. 
+The getLength method simply returns how long the snake is. We will use this to return the score when the game is over
 
-def go_left(self):
-    if self.x_vector > 0:
-        return
-    self.x_vector = -10
-    self.y_vector = 0
+Remember to call a method, you must first create an instance of the class (object) and call the method from that. Like so:
 
-def go_right(self):
-    if self.x_vector < 0:
-        return
-    self.x_vector = 10
-    self.y_vector = 0
+s = Snake(5)
 
-def go_down(self):
-    if self.y_vector < 0:
-        return
-    self.y_vector = 10
-    self.x_vector = 0
+s.getLength()
 
-* These methods change the speed of the snake. The method calculate_new_cell_positions() briefly mentioned earlier will then use these new values to calculate the new position of the snake    after it turns. 
-* The if statements check whether or not the snake is currently moving in the direction the user tries to move it. So for example, a snake cannot go left if it is already moving left. 
-* So for go_left(), if x_vector is negative, or is moving left, then the code won’t run the rest of the method, since the snake is already moving left. Otherwise, it will change the           x_vector to a negative value (-10) and keep the y_vector to zero. 
-* There can only be one nonzero value for the x and y vectors. Otherwise, the snake will move diagonally across the screen.
-* These methods change the vectors of the snake. The method calculate_new_cell_positions() briefly mentioned earlier will then use these new vector values to calculate the new position of     the snake after it turns.
+>> 5  
