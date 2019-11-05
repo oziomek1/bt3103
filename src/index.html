@@ -30,13 +30,19 @@
               <a class="nav-link"><b><u>Home</u></b></a>
             </li>
             <li class="nav-item" v-else>
-              <a class="nav-link" @click="is_home=true, is_course=false"><b>Home</b></a>
+              <a class="nav-link" @click="is_home=true, is_course=false, is_contact=false"><b>Home</b></a>
             </li>
             <li class="nav-item active" v-if="is_course">
               <a class="nav-link"><b><u>Course</u></b></a>
             </li>
             <li class="nav-item" v-else>
-              <a class="nav-link" @click="is_home=false, is_course=true"><b>Course</b></a>
+              <a class="nav-link" @click="is_home=false, is_course=true, is_contact=false"><b>Course</b></a>
+            </li>
+            <li class="nav-item active" v-if="is_contact">
+              <a class="nav-link"><b><u>Contact Us!</u></b></a>
+            </li>
+            <li class="nav-item" v-else>
+              <a class="nav-link" @click="is_home=false, is_course=false, is_contact=true"><b>Contact Us!</b></a>
             </li>
           </ul>
         </div>
@@ -112,7 +118,7 @@
 
       </div>
 
-      <div class="container" v-else>
+      <div class="container" v-else-if = "is_home" >
         <br>
         <h2 style="text-align:center;"> <b>Slithering through OOP with PyGame</b> </h2>
         <h5 style="text-align:center;"> An interactive way of learning Object Oriented Programming </h5>
@@ -130,15 +136,17 @@
         <br>
         <hr>
         <hr>
-          <div style="background-color:darkblue;padding:10px;text-align:center;">
-            <div class="about-us-intro" style="color:white">
+          
+
+          <div style="background-color:white;padding:10px;text-align:center;">
+            <div class="about-us-intro" style="color:black">
               <h2><u>About Us</u></h2>
               <p>We are a bunch of NUS students who enjoy coding in our free time. This project of ours is part of a school project that aims to improve learning pathways in NUS. We hope that our application would be useful to students whom might or might not have experience with OOP</p>
             </div>
             <div class="card-group">
               <div class="row">
-              <div class="card col-sm-6 col-md-3">
-                <img class="card-img-top" src="https://schoolforinformation.org/wp-content/uploads/2018/09/profile-300x300.png" class="img-thumbnail" alt="Card image cap">
+              <div class="card col-sm-6 col-md-3" border-radius="50px">
+                <img class="card-img-top" src="https://schoolforinformation.org/wp-content/uploads/2018/09/profile-300x300.png" class="img-thumbnail" alt="Card image cap" >
                 <div class="card-body">
                   <p class="card-title">JIT</p>
                   <p class="card-text"><small class="text-muted">Business Analytics</small></p>
@@ -168,6 +176,31 @@
             </div>
           </div>
           </div>
+
+          
+      </div>
+      <div class="container" v-else>
+        <br>
+        <h2 style="text-align:center;"> <b>Contact us!</b> </h2>
+        <h5 style="text-align:center;"> pls change </h5>
+        <br><br>
+        <hr>
+        <h4 style="text-align:center;"><b>Crash Course for Object Oriented Programming:</b></h4>
+        <p style="text-align:center;padding-left:150px;padding-right:150px;">It is highly recommended for you go through our OOP crash course to refresh your knowledge and learn more about OOP before you embark on our activities!</p>
+        <p style="text-align:center;">
+        <button class="btn btn-primary" align="middle" onclick="window.location.href = 'https://achievements-prod.firebaseapp.com/#/paths/-Lq5JUHUIbKJ024kKLh8';">View our Crash Course</button>
+        </p>
+        <hr>
+        <h3 style="text-align: center;">PyGame Emulator</h3>
+        <p class="text-center"><b>Run your own live game here!</b></p>
+        <iframe src='https://oziomek1.github.io/bt3103/' width="100%" height="800px" style="border:none;align-self:auto;"></iframe>
+        <br>
+        <hr>
+        <hr>
+              
+      </div>
+
+          
       </div>
     </div>
     <script src="https://unpkg.com/vue"></script>
