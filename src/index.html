@@ -182,26 +182,30 @@
       <div class="container" v-else>
         <br>
         <div class="header-img" style="background-image: url('./images/meeting.jpg');width:900px;height:250px;margin-left:auto;margin-right:auto;border-radius: 15px 15px 0px 0px;text-align: center;padding-top: 75px;">
-          <h2 style="color:white"> <b>Contact Us</b> </h2>
+          <h2 style="color:white;"> <b>Contact Us</b> </h2>
           <h5 style="color:white">Feel free to drop us a line below!</h5>
         </div>
         <hr>
-        <form align="center">
-          Name:<br>
-          <input type="text" name="name"><br>
-          Email Address:<br>
-          <input type="text" name="email"><br><br>
-          Type of Feedback: <br>
-          <select name="cars" style="width:200px;">
+        <form style="position: absolute;text-align:left;left:400px">
+          Name:
+          <input type="text" name="name" style="position: absolute;text-align:left;width:300px;left:250px"><br><br>
+          Email Address: 
+          <input type="text" name="email" style="position: absolute;text-align:left;width:300px;left:250px"><br><br>
+          Type of Feedback:
+          <select name="cars" style="position: absolute;text-align:left;width:300px;left:250px">
             <option value="bugs" >Bugs/Errors</option>
             <option value="suggestions">Suggestions</option>
             <option value="others">Others</option>
           </select>   <br><br>
-          Details for feedback:<br>
-          <textarea name="message" rows="10" cols="30" style="width:500px; height:300px;">Please describe in detail here</textarea><br>
+          Details for feedback:
+          <textarea name="message" rows="10" cols="30" style="position: absolute;text-align:left;width:500px;height:300px;left:250px">Please describe in detail here</textarea><br>
           <br>
-          <input type="submit" value="Submit">
+          <input type="submit" value="Submit" style="position: absolute;text-align:center;width:150px;left:250px;top:450px">
         </form>
+        <br>
+        
+        
+
               
       </div>
 
