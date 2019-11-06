@@ -17,8 +17,8 @@
   </head>
   <body>
     <div id="app">
-      <h2 class="text-center headline" style="padding-left:20px;font-family: 'Staatliches', cursive;"><b>O.O.Python</b></h3>
-      <h6 class="text-center headline" style="padding-left:30px;font-family: 'Staatliches', cursive;">by Team Infinity</h6>
+      <h2 class="text-center headline"><b>O.O.Python</b></h3>
+      <h6 class="text-center headline">by Team Infinity</h6>
 
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,26 +30,32 @@
               <a class="nav-link"><b><u>Home</u></b></a>
             </li>
             <li class="nav-item" v-else>
-              <a class="nav-link" @click="is_home=true, is_course=false, is_contact=false"><b>Home</b></a>
+              <a class="nav-link" @click="changeSite(0)"><b>Home</b></a>
             </li>
             <li class="nav-item active" v-if="is_course">
               <a class="nav-link"><b><u>Course</u></b></a>
             </li>
             <li class="nav-item" v-else>
-              <a class="nav-link" @click="is_home=false, is_course=true, is_contact=false"><b>Course</b></a>
+              <a class="nav-link" @click="changeSite(1)"><b>Course</b></a>
+            </li>
+            <li class="nav-item active" v-if="is_press_release">
+              <a class="nav-link"><b><u>Press Release</u></b></a>
+            </li>
+            <li class="nav-item" v-else>
+              <a class="nav-link" @click="changeSite(2)"><b>Press Release</b></a>
             </li>
             <li class="nav-item active" v-if="is_contact">
               <a class="nav-link"><b><u>Contact Us!</u></b></a>
             </li>
             <li class="nav-item" v-else>
-              <a class="nav-link" @click="is_home=false, is_course=false, is_contact=true"><b>Contact Us!</b></a>
+              <a class="nav-link" @click="changeSite(3)"><b>Contact Us!</b></a>
             </li>
           </ul>
         </div>
       </nav>
       <div v-if="is_course">
         <br>
-        <h4 style="text-align:center;">Tasks Progress:</h4>
+        <h4 class="text-center">Tasks Progress:</h4>
         <nav clas="completion-navbar">
           <ul class="pagination justify-content-center">
           <span v-for="(task, taskIndex) in tasks">
@@ -118,28 +124,28 @@
 
       </div>
 
-      <div class="container" v-else-if = "is_home" >
+      <div class="container text-center" v-else-if = "is_home" >
         <br>
-        <h2 style="text-align:center;"> <b>Slithering through OOP with PyGame</b> </h2>
-        <h5 style="text-align:center;"> An interactive way of learning Object Oriented Programming </h5>
+        <h2> <b>Slithering through OOP with PyGame</b> </h2>
+        <h5> An interactive way of learning Object Oriented Programming </h5>
         <br><br>
         <hr>
-        <h4 style="text-align:center;"><b>Crash Course for Object Oriented Programming:</b></h4>
-        <p style="text-align:center;padding-left:150px;padding-right:150px;">It is highly recommended for you go through our OOP crash course to refresh your knowledge and learn more about OOP before you embark on our activities!</p>
-        <p style="text-align:center;">
-        <button class="btn btn-primary" align="middle" onclick="window.location.href = 'https://achievements-prod.firebaseapp.com/#/paths/-Lq5JUHUIbKJ024kKLh8';">View our Crash Course</button>
+        <h4><b>Crash Course for Object Oriented Programming:</b></h4>
+        <p class="padding-left-right">It is highly recommended for you go through our OOP crash course to refresh your knowledge and learn more about OOP before you embark on our activities!</p>
+        <p>
+          <button class="btn btn-primary" align="middle" onclick="window.location.href = 'https://achievements-prod.firebaseapp.com/#/paths/-Lq5JUHUIbKJ024kKLh8';">View our Crash Course</button>
         </p>
         <hr>
-        <h3 style="text-align: center;">PyGame Emulator</h3>
-        <p class="text-center"><b>Run your own live game here!</b></p>
-        <iframe src='https://oziomek1.github.io/bt3103/' width="100%" height="800px" style="border:none;align-self:auto;"></iframe>
+        <h3 class=>PyGame Emulator</h3>
+        <p><b>Run your own live game here!</b></p>
+        <iframe src='https://oziomek1.github.io/bt3103/' width="100%" height="800px"></iframe>
         <br>
         <hr>
         <hr>
           
 
-          <div style="background-color:white;padding:10px;text-align:center;">
-            <div class="about-us-intro" style="color:black">
+          <div class="text-center bg-white padding-10">
+            <div class="about-us-intro">
               <h2><u>About Us</u></h2>
               <p>We are a bunch of NUS students who enjoy coding in our free time. This project of ours is part of a school project that aims to improve learning pathways in NUS. We hope that our application would be useful to students whom might or might not have experience with OOP</p>
             </div>
@@ -176,40 +182,135 @@
             </div>
           </div>
           </div>
-
-          
       </div>
-      <div class="container" v-else>
+
+      <div class="container text-center" v-else-if="is_press_release">
         <br>
-        <div class="header-img" style="background-image: url('./images/meeting.jpg');width:900px;height:250px;margin-left:auto;margin-right:auto;border-radius: 15px 15px 0px 0px;text-align: center;padding-top: 75px;">
-          <h2 style="color:white;"> <b>Contact Us</b> </h2>
-          <h5 style="color:white">Feel free to drop us a line below!</h5>
+        <h1> <b>Press Release</b> </h1>
+        <hr>
+        <h4><b>OOPython, a Pygame learning platform for Object Oriented Programming</b></h4>
+        <div>
+          <figure>
+              <img src='images/meeting.jpg' alt='OOPython'/>
+              <figcaption> Through building a popular video game, Snake, the program aims to help beginner programmers understand OOP.</figcaption>
+          </figure>
+          <div class="text-justify">
+          <p>
+          <b> Singapore - Sept. 23, 2019 </b> - NUS-based student group Team Infinity announces OOPython, an Object Oriented Programming (OOP) learning platform for computing students.
+          </p>
+          <p>
+            The application leverages on learning through video games to help students better understand OOP. According to a survey done by the American Psychological Association, nearly 60% of K-12 teachers have used some sort of video games in their classrooms. Programs such as BrainPOP integrates active learning through short readings, videos, and small activities. There are also incentives such as an achievement page and a ranking system among classmates
+          </p>
+          <p>
+            Object-oriented programming is another way of organizing the same properties, methods functions, and events you work with in procedural languages.
+          </p> 
+          <p>
+            The benefits of OOP include: 
+            <ul>
+              <li>organizing projects into consistent and manageable pieces. </li> 
+              <li>introducing structure intended to avoid scaling and maintenance problems</li>
+            </ul>
+            There are a few problems with learning OOP. According to a survey done by the team, over half the students found it difficult to visualize class interactions and output when learning OOP. Almost 90% would like to see what they coded through a video game. OOP at times can be too conceptual. If a teacher does not have students connect the content with examples, they will have a harder time retaining that new knowledge There is also a lot to cover in OOP and a semester to learn it may not be the right amount of time for all students. Some may pick up right away, others may fall behind and never catch up. Some tasks or descriptions might be not designed for every single participant as they might have different background
+          </p>
+          <p>
+            Features of OOPython address problems with understanding OOP: 
+            <ul>
+              <li><b>Instant, visual feedback</b>:  After every lesson, OOPython will run the code beginner programmers input. They can then see how their code impacts how Snake runs and functions.  </li>
+              <li><b>Pacing</b>: OOPython will break down Snake into multiple parts and slowly introduce each concept of OOP. Users can focus on one task at a time. As they complete the game, the application will introduce more concepts to build on. OOPython will also have a reset button if the user wants to relearn/redo code. There will be a hint button per task if the user is stuck  </li>
+              <li><b>Active learning</b>: After introducing a new concept, OOPython will immediately implement it into the game. For example, the program will introduce encapsulation early on. Thus, users will better understand why building a Snake class should include functions such as move() and eat()</li> 
+            </ul>
+            “We saw many year-two computing students lack an understanding of OOP,” explains Jit, lead project manager of OOPython “We chose to use Pygame since most programmers are familiar with Python. However, the benefits of OOP can be applied to multiple coding languages. We hope students can carry what they learned from OOPython beyond the classroom and to their careers”.
+          </p>
+          <p> OOPython will be free to use and available by week 13. There are no additional fees. </p>
+          <p> “Team Infinity’s application addresses the many problems that come with learning OOP,” says Year 3 CS student Carrie Wong. “The ability to go at my own pace gives me time to digest the information, and I can actually see how the game I create comes together. I cannot wait to see what the full version of this app provides”.  </p>
+          <p> OOPython is currently in beta and the full version of the program will be available by week 13. To learn more, please email Team Infinity wedoknowwhatweredoing@gmail.com</p>
+          <div><b>FAQs</b> </div>
+          <p>
+            <b>What if I want to learn only one component of OOP?</b> 
+            <ul> 
+              <li>
+                It is difficult to learn only one component of OOP as many of its concepts are interdependent. 
+              </li>
+              <li> Building Snake will help users understand how said components relate to one another. </li>
+            </ul>
+            <b>What if I want to learn OOP with a different language? </b>
+            <ul>
+              <li>
+                Concepts of OOP will carry over to other languages. We believe the easiest way to learn OOP is through Python.
+              </li>
+            </ul>
+            <b>Why Snake? </b>
+            <ul>
+              <li>
+                Snake is a game most are familiar with. It does not have too many components, but enough to learn the basics concepts of OOP.
+              </li>
+              <li>
+                Snake is also easy to run in the browser. It does not require too much power and has few processing issues 
+              </li>  
+            </ul> 
+            <b>My code runs but the game is still not working properly... </b>
+            <ul>
+              <li> 
+                  Because this is the first version of our application, we may not have all the solutions presented. Please email us with your code and the question you are stuck on wedoknowwhatweredoing@gmail.com
+              </li>
+              <li>
+                  For now, please see our example code per lesson. The more you email us your code, the more solutions we can provide our users!
+              </li>
+            </ul> 
+          </p>
+        </div>
+      </div>
+      </div>
+
+      <div class="container center" v-else>
+        <br>
+        <div class="header-contact-image">
+          <img src="./images/meeting.jpg" class="img-fluid">
+          <h2 class="header-over-image-1"> <b>Contact Us</b> </h2>
+          <h5 class="header-over-image-2">Feel free to drop us a line below!</h5>
         </div>
         <hr>
-        <form style="position: absolute;text-align:left;left:400px">
-          Name:
-          <input type="text" name="name" style="position: absolute;text-align:left;width:300px;left:250px"><br><br>
-          Email Address: 
-          <input type="text" name="email" style="position: absolute;text-align:left;width:300px;left:250px"><br><br>
-          Type of Feedback:
-          <select name="cars" style="position: absolute;text-align:left;width:300px;left:250px">
-            <option value="bugs" >Bugs/Errors</option>
-            <option value="suggestions">Suggestions</option>
-            <option value="others">Others</option>
-          </select>   <br><br>
-          Details for feedback:
-          <textarea name="message" rows="10" cols="30" style="position: absolute;text-align:left;width:500px;height:300px;left:250px">Please describe in detail here</textarea><br>
-          <br>
-          <input type="submit" value="Submit" style="position: absolute;text-align:center;width:150px;left:250px;top:450px">
-        </form>
-        <br>
-        
-        
+        <div class="alert alert-secondary text-center">Thank you for your feedback, we will strive towards making OOPython better for you!</div>
 
-              
-      </div>
+        <div class="row justify-content">
+          <div class="col-3"></div>
+          <div class="col-9">
+            <form class="needs-validation contact-form" id="feedbackForm" onsubmit="formSubmit(); return false;">
+              <div class="name col-md-8 mb-3">
+                <label for="validationTooltip01">First name*</label>
+                <input type="text" class="form-control" id="name" placeholder="First name" required>
+                <div class="invalid-feedback">Enter your name</div>
+              </div>
+              <div class="Email col-md-8 mb-3">
+                <label for="validationTooltip02">Email Address*</label>
+                <input type="email" class="form-control" id="email" placeholder="Email Address" required>
+                <div class="invalid-feedback">Enter a valid email</div>
+              </div>
+            
+              <div class="feedbackType col-md-8 mb-3">
+                <label for="validationTooltip03">Feedback Type</label>
+                <select class="custom-select" id="feedbackType" required>
+                  <option value="">Select Option</option>
+                  <option value="bugs">Bugs & Errors</option>
+                  <option value="suggestions">Suggestions & Improvements</option>
+                  <option value="others">Others</option>
+                </select>
+                <div class="invalid-feedback">Select one option</div>
+              </div>
 
-          
+              <div class="comments col-md-8 mb-3">
+                <label for="comment">Comments:</label>
+                <textarea class="form-control" rows="5" id="comments" placeholder="Details..." required></textarea>
+              </div>
+              <div class="invalid-feedback">Kindly elaborate more about your feedback raised</div>
+
+              <div class="col-md-8 mb-3 text-center">
+                <button class="btn btn-primary" type="submit">Submit form</button>
+              </div>
+
+            </form>  
+          </div> 
+        </div>
       </div>
     </div>
     <script src="https://unpkg.com/vue"></script>
@@ -219,6 +320,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/python/python.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-codemirror@4.0.6/dist/vue-codemirror.min.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
     <script>
       Vue.use(window.VueCodemirror)
       var myComponent = Vue.component('course-component', {
@@ -370,6 +477,8 @@
           showFailedTaskAlerts: new Array(5).fill(false),
           is_home: true,
           is_course: false,
+          is_contact: false,
+          is_press_release: false,
         },
         components: {
           myComponent: myComponent,
@@ -441,6 +550,28 @@
 
         },
         methods: {
+          changeSite: function(siteId) {
+            switch(siteId) {
+              case 0:
+                this.is_home = true;
+                this.is_course = this.is_press_release = this.is_contact = false;
+                break;
+              case 1:
+                this.is_course = true;
+                this.is_home = this.is_press_release = this.is_contact = false;
+                break;
+              case 2:
+                this.is_press_release = true;
+                this.is_home = this.is_course = this.is_contact = false;
+                break;
+              case 3:
+                this.is_contact = true;
+                this.is_home = this.is_course = this.is_press_release = false;
+                break;
+              default:
+                console.log('Incorrect navigation button pressed');
+            }
+          },
           isComplete: function(page) {
             return this.completePages.includes(page);
           },
@@ -480,10 +611,49 @@
         }
       });
 
-
       function defaultInput() {
         return '"""\nInput your code here:\n"""';
       }
+
+      function formSubmit() {
+        let feedbackName = document.getElementById('name').value;
+        let feedbackEmail = document.getElementById('email').value;
+        let feedbackType = document.getElementById('feedbackType').value;
+        let feedbackComment = document.getElementById('comments').value;
+
+        sendMessage(feedbackName, feedbackEmail, feedbackType, feedbackComment);
+      }
+
+      function sendMessage(feedbackName, feedbackEmail, feedbackType, feedbackComment) {
+        let feedbackRefs = firebase.database().ref('feedbacks');
+        console.log('feedbackRefs', feedbackRefs);
+        let feedbackRef = feedbackRefs.push();
+        console.log('feedback ref', feedbackRef);
+        feedbackRef.update({
+          name: feedbackName,
+          email: feedbackEmail,
+          type: feedbackType,
+          comment: feedbackComment
+        });
+        console.log('feedback ref', feedbackRef);
+        return feedbackRef
+      }
+
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCcLe5XNNpGmuxBgNwYeZ0bIj6TW-5P21A",
+        authDomain: "bt3103-final-lambda.firebaseapp.com",
+        databaseURL: "https://bt3103-final-lambda.firebaseio.com",
+        projectId: "bt3103-final-lambda",
+        storageBucket: "bt3103-final-lambda.appspot.com",
+        messagingSenderId: "23368133143",
+        appId: "1:23368133143:web:d5579d3ebaf292f58a8a52"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      var feedbackForm = document.getElementById("feedbackForm");
+      // feedbackForm.addEventListener('submit', formSubmit);
 
     </script>
   </body>
@@ -496,6 +666,8 @@ body {
 
 .headline {
   color: #00254d;
+  padding-left: 20px;
+  font-family: 'Staatliches', cursive;
 }
 
 .bg-primary-dark {
@@ -533,16 +705,67 @@ body {
 .text-center {
   text-align: center;
 }
+
+.text-justify {
+  text-align: justify;
+}
+
 .text-left {
   text-align: left;
 }
+
 .preserve-formatting-text {
     white-space: pre-wrap;
     text-align: left;
 }
 
+.padding-left-right {
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+.padding-10 {
+  padding: 10px;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.header-contact-image {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px 15px 0px 0px;
+  text-align: center;
+  padding-top: 75px;
+  
+}
+
+.header-over-image-1 {
+  position: absolute;
+  color: white;
+  top: 45%;
+  left: 0;
+  width: 100%;
+}
+
+.header-over-image-2 {
+  position: absolute;
+  color: white;
+  top: 65%;
+  left: 0;
+  width: 100%;
+}
+
+
 li.completion {
   margin: 0.5em;
+}
+
+.contact-form {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 </style>
