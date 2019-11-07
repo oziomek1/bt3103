@@ -281,13 +281,13 @@
                 <input type="text" class="form-control" id="name" placeholder="First name" required>
                 <div class="invalid-feedback">Enter your name</div>
               </div>
-              <div class="Email col-md-8 mb-3">
+              <div class="email col-md-8 mb-3">
                 <label for="validationTooltip02">Email Address*</label>
                 <input type="email" class="form-control" id="email" placeholder="Email Address" required>
                 <div class="invalid-feedback">Enter a valid email</div>
               </div>
             
-              <div class="feedbackType col-md-8 mb-3">
+              <div class="feedback-type col-md-8 mb-3">
                 <label for="validationTooltip03">Feedback Type</label>
                 <select class="custom-select" id="feedbackType" required>
                   <option value="">Select Option</option>
@@ -300,7 +300,7 @@
 
               <div class="comments col-md-8 mb-3">
                 <label for="comment">Comments:</label>
-                <textarea class="form-control" rows="5" id="comments" placeholder="Details..." required></textarea>
+                <textarea class="form-control" rows="5" id="comment" placeholder="Details..." required></textarea>
               </div>
               <div class="invalid-feedback">Kindly elaborate more about your feedback raised</div>
 
@@ -530,7 +530,7 @@
             $vm.tasks[4].content.topicDescription = result;
           });
           this.fetchText($vm.base_github_url + 'text/task_5_task.txt').then(function(result) {
-            $vm.tasks[5].content.taskDescription = result;
+            $vm.tasks[4].content.taskDescription = result;
           });
 
           this.fetchText($vm.base_github_url + 'solution_template/template_5.py').then(function(result) {
@@ -616,26 +616,21 @@
       }
 
       function formSubmit() {
-        let feedbackName = document.getElementById('name').value;
-        let feedbackEmail = document.getElementById('email').value;
-        let feedbackType = document.getElementById('feedbackType').value;
-        let feedbackComment = document.getElementById('comments').value;
-
-        sendMessage(feedbackName, feedbackEmail, feedbackType, feedbackComment);
+        let feedbackForm = document.getElementById('feedbackForm')
+        saveFormFirebase(feedbackForm);
+        feedbackForm.reset();
       }
 
-      function sendMessage(feedbackName, feedbackEmail, feedbackType, feedbackComment) {
+      function saveFormFirebase(feedbackForm) {
         let feedbackRefs = firebase.database().ref('feedbacks');
-        console.log('feedbackRefs', feedbackRefs);
         let feedbackRef = feedbackRefs.push();
-        console.log('feedback ref', feedbackRef);
         feedbackRef.update({
-          name: feedbackName,
-          email: feedbackEmail,
-          type: feedbackType,
-          comment: feedbackComment
+          name: feedbackForm.name.value,
+          email: feedbackForm.email.value,
+          type: feedbackForm.feedbackType.value,
+          comment: feedbackForm.comment.value,
+          time: new Date().toUTCString()
         });
-        console.log('feedback ref', feedbackRef);
         return feedbackRef
       }
 
@@ -651,9 +646,6 @@
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-
-      var feedbackForm = document.getElementById("feedbackForm");
-      // feedbackForm.addEventListener('submit', formSubmit);
 
     </script>
   </body>

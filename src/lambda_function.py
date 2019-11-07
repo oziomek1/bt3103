@@ -30,7 +30,7 @@ def lambda_handler(event, context):
             try:
                 _length = 10
                 snake = executable_module.Snake(_length)
-                assert s.getLength() == 10, "You did not properly create the getLength method"
+                assert snake.getLength() == 10, "You did not properly create the getLength method"
             except:
                 return False
             return True
