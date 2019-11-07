@@ -1,9 +1,5 @@
 Instructions:
 
-* Create a subclass of playGame named detailsOfGame and detail its methods like so:
+* Increase the length of the snake by 3 instead of 1 every time the snake eats a snack
 
-* Have def show_menu return the string “Showing menu”
-
-* Have def start return the string “Starting game!”
-
-* HINT: Remember, to inherit a parent class, you must include its name in the subclass parameters
+* HINT: Remember, self.length references how long our snake is.

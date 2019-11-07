@@ -1,5 +1,10 @@
+
 Instructions:
 
-* Increase the length of the snake by 3 instead of 1 every time the snake eats a snack
+* Create the def go_up(self): method.
 
-* HINT: Remember, self.length references how long our snake is.
+* Remember the y_vector deals with vertical movement. So check whether or not the snake is already moving up before changing its direction. Have the code return "Going Up" if the snake is already going up
+
+* Change the y_vector value to 10 after checking whether or not the snake is already moving up and set the x_vector to 0
+
+* HINT: please check the example codes for the other go methods. Remember, the x vector refers to moving horizontally while the y_vector refers to moving vertically. Vectors can be negative as well.

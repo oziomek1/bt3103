@@ -1,7 +1,9 @@
 Instructions:
 
-* Create another type of snake class named badSnake that inherits the Snake class.
+* Create a subclass of playGame named detailsOfGame and detail its methods like so:
 
-* Override the def movement method to say "I do not move at all"
+* Have def show_menu return the string “Showing menu”
 
-* HINT: Remember, you must include the class name you want to inherit in the child class parameters.
+* Have def start return the string “Starting game!”
+
+* HINT: Remember, to inherit a parent class, you must include its name in the subclass parameters

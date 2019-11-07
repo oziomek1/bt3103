@@ -434,7 +434,7 @@
             {
               name: 'Task 4', 
               content: {
-                topic: 'addCell for Snake',
+                topic: 'defining direction',
                 topicDescription: null,
                 taskDescription: null,
                 userInput: defaultInput(),
@@ -446,7 +446,7 @@
             {
               name: 'Task 5', 
               content: {
-                topic: 'abstraction and class Play',
+                topic: 'addCell for Snake',
                 topicDescription: null,
                 taskDescription: null,
                 userInput: defaultInput(),
@@ -458,7 +458,7 @@
             {
               name: 'Task 6', 
               content: {
-                topic: 'Polymorphism of Snake and Snack',
+                topic: 'abstraction and class Play',
                 topicDescription: null,
                 taskDescription: null,
                 userInput: defaultInput(),
@@ -467,14 +467,26 @@
                 tried: false,
               }
             },
+            {
+              name: 'Task 7', 
+              content: {
+                topic: 'Polymorphism of Snake and Snack',
+                topicDescription: null,
+                taskDescription: null,
+                userInput: defaultInput(),
+                taskId: '7',
+                output: false,
+                tried: false,
+              }
+            },
           ],
           result: '',
           currentPage: 1,
           completePages: [],
-          pages: [...Array(5).keys()].slice(1),
+          pages: [...Array(7).keys()].slice(1),
           base_github_url: 'https://raw.githubusercontent.com/oziomek1/bt3103/master/',
-          showPassedTaskAlerts: new Array(5).fill(false),
-          showFailedTaskAlerts: new Array(5).fill(false),
+          showPassedTaskAlerts: new Array(7).fill(false),
+          showFailedTaskAlerts: new Array(7).fill(false),
           is_home: true,
           is_course: false,
           is_contact: false,
@@ -485,69 +497,18 @@
         },
         mounted () {
           let $vm = this;
-          this.fetchText($vm.base_github_url + 'text/task_1_intro.txt').then(function(result) {
-            $vm.tasks[0].content.topicDescription = result;
-          });
-          this.fetchText($vm.base_github_url + 'text/task_1_task.txt').then(function(result) {
-            $vm.tasks[0].content.taskDescription = result;
-          });
-          this.fetchText($vm.base_github_url + 'solution_template/template_1.py').then(function(result) {
-            $vm.tasks[0].content.userInput = result;
-          });
 
-          this.fetchText($vm.base_github_url + 'text/task_2_intro.txt').then(function(result) {
-            $vm.tasks[1].content.topicDescription = result;
-          });
-          this.fetchText($vm.base_github_url + 'text/task_2_task.txt').then(function(result) {
-            $vm.tasks[1].content.taskDescription = result;
-          });
-          this.fetchText($vm.base_github_url + 'solution_template/template_2.py').then(function(result) {
-            $vm.tasks[1].content.userInput = result;
-          });
-
-          this.fetchText($vm.base_github_url + 'text/task_3_intro.txt').then(function(result) {
-            $vm.tasks[2].content.topicDescription = result;
-          });
-          this.fetchText($vm.base_github_url + 'text/task_3_task.txt').then(function(result) {
-            $vm.tasks[2].content.taskDescription = result;
-          });
-          this.fetchText($vm.base_github_url + 'solution_template/template_3.py').then(function(result) {
-            $vm.tasks[2].content.userInput = result;
-          });
-
-          this.fetchText($vm.base_github_url + 'text/task_4_intro.txt').then(function(result) {
-            $vm.tasks[3].content.topicDescription = result;
-          });
-          this.fetchText($vm.base_github_url + 'text/task_4_task.txt').then(function(result) {
-            $vm.tasks[3].content.taskDescription = result;
-          });
-
-          this.fetchText($vm.base_github_url + 'solution_template/template_4.py').then(function(result) {
-            $vm.tasks[3].content.userInput = result;
-          });
-
-          this.fetchText($vm.base_github_url + 'text/task_5_intro.txt').then(function(result) {
-            $vm.tasks[4].content.topicDescription = result;
-          });
-          this.fetchText($vm.base_github_url + 'text/task_5_task.txt').then(function(result) {
-            $vm.tasks[4].content.taskDescription = result;
-          });
-
-          this.fetchText($vm.base_github_url + 'solution_template/template_5.py').then(function(result) {
-            $vm.tasks[4].content.userInput = result;
-          });
-
-          this.fetchText($vm.base_github_url + 'text/task_6_intro.txt').then(function(result) {
-            $vm.tasks[5].content.topicDescription = result;
-          });
-          this.fetchText($vm.base_github_url + 'text/task_6_task.txt').then(function(result) {
-            $vm.tasks[5].content.taskDescription = result;
-          });
-
-          this.fetchText($vm.base_github_url + 'solution_template/template_6.py').then(function(result) {
-            $vm.tasks[5].content.userInput = result;
-          });
-
+          for(let i = 0; i < $vm.tasks.length; i++) {
+            this.fetchText($vm.base_github_url + 'text/task_' + (+i + 1) + '_intro.txt').then(function(result) {
+              $vm.tasks[i].content.topicDescription = result;
+            });
+            this.fetchText($vm.base_github_url + 'text/task_' + (+i + 1) + '_task.txt').then(function(result) {
+              $vm.tasks[i].content.taskDescription = result;
+            });
+            this.fetchText($vm.base_github_url + 'solution_template/template_' + (+i + 1) + '.py').then(function(result) {
+              $vm.tasks[i].content.userInput = result;
+            });
+          }
         },
         methods: {
           changeSite: function(siteId) {

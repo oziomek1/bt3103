@@ -1,6 +1,14 @@
-class Snake:
-    def movement(self):
-        return "I move in straight lines"
+from abc import ABC, abstractmethod
 
-class badSnake:
+class playGame(ABC):
+
+    @abstractmethod
+    def show_menu(self):
+        pass 
+
+    @abstractmethod
+    def start(self):
+        pass 
+
+class detailsOfGame():
     # START CODE HERE

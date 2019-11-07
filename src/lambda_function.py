@@ -36,13 +36,25 @@ def lambda_handler(event, context):
             return True
         elif task_id == "4":
             try:
+                _vector = 10
+                snake = executable_module.Snake(0, _vector)
+                assert snake.go_up() == "Going Up", "You did not properly check if the snake is already moving up. Be sure to return Going Up as well"
+                snake2 = executable_module.Snake(_vector, -_vector)
+                snake2.go_up()
+                assert snake2.x_vector == 0, "Your snake is moving diagonally! Change the x_vector to 0"
+                assert snake2.y_vector == 10, "Your snake is not moving up"
+            except:
+                return False
+            return True
+        elif task_id == "5":
+            try:
                 snake = executable_module.Snake()
                 snake.add_cell()
                 assert snake.length == 6, "You did not properly change the length increment of the snake"
             except:
                 return False
             return True
-        elif task_id == "5":
+        elif task_id == "6":
             try:
                 test = executable_module.detailsOfGame()
                 assert test.show_menu() == "Showing menu", "You did not properly inherit/detail the abstract method show_menu"
@@ -50,7 +62,7 @@ def lambda_handler(event, context):
             except:
                 return False
             return True
-        elif task_id == "6":
+        elif task_id == "7":
             try:
                 snake = executable_module.badSnake()
                 assert snake.movement() == "I do not move at all", "You did not properly inherit the Snake class"
