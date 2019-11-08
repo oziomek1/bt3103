@@ -142,46 +142,43 @@
         <br>
         <hr>
         <hr>
-          
 
-          <div class="text-center bg-white padding-10">
-            <div class="about-us-intro">
-              <h2><u>About Us</u></h2>
-              <p>We are a bunch of NUS students who enjoy coding in our free time. This project of ours is part of a school project that aims to improve learning pathways in NUS. We hope that our application would be useful to students whom might or might not have experience with OOP</p>
+        <!-- Team section -->
+        <div class="team">
+          <div class="container">
+            <h1 class="text-center">Our Team</h1>
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-12 item">
+            <img src="https://schoolforinformation.org/wp-content/uploads/2018/09/profile-300x300.png" class="img-fluid" alt="team">
+            <div class="des">
+              Aven
+              </div>
+            <span class="text-muted">Y2 Business Analytics</span>
             </div>
-            <div class="card-group">
-              <div class="row">
-              <div class="card col-sm-6 col-md-3" border-radius="50px">
-                <img class="card-img-top" src="https://schoolforinformation.org/wp-content/uploads/2018/09/profile-300x300.png" class="img-thumbnail" alt="Card image cap" >
-                <div class="card-body">
-                  <p class="card-title">JIT</p>
-                  <p class="card-text"><small class="text-muted">Business Analytics</small></p>
-                </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 item">
+            <img src="https://schoolforinformation.org/wp-content/uploads/2018/09/profile-300x300.png" class="img-fluid" alt="team">
+            <div class="des">
+                Jit
               </div>
-              <div class="card col-sm-6 col-md-3">
-                <img class="card-img-top" src="https://schoolforinformation.org/wp-content/uploads/2018/09/profile-300x300.png" class="img-thumbnail" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-title">WOJCIECH</p>
-                  <p class="card-text"><small class="text-muted">Computer Science</small></p>
-                </div>
+            <span class="text-muted">Y2 Business Analytcs</span>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 item">
+            <img src="https://schoolforinformation.org/wp-content/uploads/2018/09/profile-300x300.png" class="img-fluid" alt="team">
+            <div class="des">
+              Wojtek 
               </div>
-              <div class="card col-sm-6 col-md-3">
-                <img class="card-img-top" src="https://schoolforinformation.org/wp-content/uploads/2018/09/profile-300x300.png" class="img-thumbnail" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-title">AVEN</p>
-                  <p class="card-text"><small class="text-muted">Business Analytics</small></p>
-                </div>
+            <span class="text-muted">Y5 Computer Science</span>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 item">
+            <img src="https://schoolforinformation.org/wp-content/uploads/2018/09/profile-300x300.png" class="img-fluid" alt="team">
+              <div class="des">
+              Kyle
               </div>
-              <div class="card col-sm-6 col-md-3">
-                <img class="card-img-top" src="https://schoolforinformation.org/wp-content/uploads/2018/09/profile-300x300.png" class="img-thumbnail" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-title">KYLE</p>
-                  <p class="card-text"><small class="text-muted">Computer Science</small></p>
-                </div>
-              </div>
+            <span class="text-muted">Y3 Computer Science</span>
             </div>
           </div>
           </div>
+        </div>
       </div>
 
       <div class="container text-center" v-else-if="is_press_release">
@@ -719,6 +716,35 @@ li.completion {
 .contact-form {
   margin-left: auto;
   margin-right: auto;
+}
+
+.team{
+ margin: 4em 0;
+ position: relative;  
+}
+.team h1{
+ color:#F97300;
+ margin: 2em; 
+}
+.team .item{
+ position: relative;
+}
+.team .des{
+ background: #F97300;
+ color: #fff;
+ text-align: center;
+ border-bottom-left-radius: 93%;
+ transition:.3s ease-in-out;
+ 
+}
+.team .item:hover .des{
+ height: 100%;
+ background:#f973007d;
+ position: absolute;
+ width: 89%;
+ padding: 5em;
+ top: 0;
+ border-bottom-left-radius: 0;
 }
 
 </style>
