@@ -1,4 +1,7 @@
+import boto3
 import json
+import time
+
 from types import ModuleType
 
 def lambda_handler(event, context):
@@ -108,6 +111,20 @@ def lambda_handler(event, context):
             shown = postReq["shown"]["0"].strip()
             
             is_correct = check_correction(editable, hidden)
+
+            client = boto3.resource('dynamodb')
+            table = client.Table('bt3103-solutions')
+            table.put_item(
+                Item={
+                    'solution_id': str(round(time.time() * 1000)),
+                    'input': editable,
+                    'result': is_correct,
+                    'user_token': userToken,
+                    'task_id': hidden,
+                    'time': time.ctime(),
+                }
+            )
+
         except Exception as e:
             pass
         
