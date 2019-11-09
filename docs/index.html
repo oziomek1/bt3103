@@ -5,19 +5,19 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
           integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="col-md-10">
+    <div class="">
         <div id="mycanvas"></div>
         <div class="row">
-            <div class="col-xs-12" id="editorsplace">
+            <div id="editorsplace">
                 <div id="editor" style="border: 1px solid black"></div>
             </div>
         </div>
-        <div class="col-md-5"></div>
-        <a class="btn btn-primary col-md-2" id="runbutton">Run code<span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>
+        <button type="button" class="btn btn-primary nus-blue-button" id="runbutton">Run code</button>
     </div>
     <div class="col-md-2"></div>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js" type="text/javascript" charset="utf-8"></script>
@@ -43,8 +43,8 @@
         fillEditor();
     </script>
     <script>
-        document.getElementById("editor").style['width'] = document.getElementById("editorsplace").offsetWidth;
-        document.getElementById("editor").style['height'] = 0.7 * window.innerHeight;
+        document.getElementById("editor").style['width'] = 800;
+        document.getElementById("editor").style['height'] = 500;
         document.getElementById("editor").style['margin'] = "0 auto";
     </script>
     <script>
@@ -102,7 +102,7 @@
             for (var i = 0; i < arrows.length; i++) {
                 arrows[i] = document.createElement("span");
                 div.appendChild(arrows[i]);
-                $(arrows[i]).addClass("btn btn-primary btn-arrow");
+                $(arrows[i]).addClass("btn btn-primary btn-arrow nus-blue-bg");
                 var ic = document.createElement("i");
                 $(ic).addClass("fas fa-arrow-" + direction[i]);
                 arrows[i].appendChild(ic);
@@ -158,7 +158,7 @@
         }
 
         function addModal() {
-            $(Sk.main_canvas).css("border", "1px solid blue");
+            $(Sk.main_canvas).css("border", "1px solid #003D7C");
             var currentTarget = resetTarget();
 
             var div1 = document.createElement("div");
@@ -167,7 +167,7 @@
             $(div1).css("text-align", "center");
 
             var btn1 = document.createElement("span");
-            $(btn1).addClass("btn btn-primary btn-sm pull-right");
+            $(btn1).addClass("btn btn-primary btn-sm pull-right nus-blue-bg");
             var ic = document.createElement("i");
             $(ic).addClass("fas fa-times");
             btn1.appendChild(ic);
@@ -242,6 +242,60 @@
         });
 
     </script>
+
+    <style type="text/css">
+
+body {
+    font-size: 2em;
+}
+.nus-blue-button {
+  background-color: #003D7C;
+  border-color: #003D7C;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px 10px 5px 10px;
+  position: absolute;
+  left: 300px;
+}
+.nus-blue-button.focus,
+.nus-blue-button:focus {
+  color: #fff;
+  background-color: #003D7C;
+  border-color: #003D7C;
+  outline: none;
+  box-shadow: none;
+}
+.nus-blue-button:hover {
+  color: #fff;
+  background-color: #004d99;
+  border-color: #004d99;
+  outline: none;
+  box-shadow: none;
+}
+.nus-blue-button.active,
+.nus-blue-button:active {
+  color: #fff;
+  background-color: #004d99;
+  border-color: #004d99;
+  outline: none;
+}
+.nus-blue-button.active.focus,
+.nus-blue-button.active:focus,
+.nus-blue-button.active:hover,
+.nus-blue-button:active.focus,
+.nus-blue-button:active:focus,
+.nus-blue-button:active:hover {
+  color: #fff;
+  background-color: #004d99;
+  border-color: #004d99;
+  outline: none;
+  box-shadow: none;
+}
+
+.nus-blue-bg {
+  background-color: #003D7C !important;
+}
+    </style>
 </body>
 </html>
 
