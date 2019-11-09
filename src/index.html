@@ -46,6 +46,12 @@
             <li class="nav-item" v-else>
               <a class="nav-link" @click="changeSite(2)"><b>Press Release</b></a>
             </li>
+            <li class="nav-item active" v-if="is_emulator">
+                <a class="nav-link"><b><u>PyGame Emulator</u></b></a>
+              </li>
+              <li class="nav-item" v-else>
+                <a class="nav-link" @click="changeSite(4)"><b>PyGame Emulator</b></a>
+              </li>
             <li class="nav-item active" v-if="is_contact">
               <a class="nav-link"><b><u>Contact Us!</u></b></a>
             </li>
@@ -146,10 +152,7 @@
   
           <br><br>
           <hr>
-        <h3 class=>PyGame Emulator</h3>
-        <p><b>Run your own live game here!</b></p>
-        <iframe src='https://oziomek1.github.io/bt3103/' width="820px" height="540px" frameBorder="0"></iframe>
-        <br>
+        
         <!-- Testimonials -->
         <div class="Testimonials">
           <div class="container">
@@ -268,6 +271,16 @@
           </div>
         </div>
       </div>
+
+      <div class="container text-center" v-else-if="is_emulator">
+          <br>
+          <h1> <b>Pygame Emulator</b> </h1>
+          <hr>
+          <h5>Run your own live game here!</h5>
+          <div>
+              <iframe src='https://oziomek1.github.io/bt3103/' width="820px" height="540px" frameBorder="0"></iframe>
+          </div>
+        </div>
 
       <div class="container center" v-else>
         <br>
@@ -510,6 +523,7 @@
           is_course: false,
           is_contact: false,
           is_press_release: false,
+          is_emulator: false,
           press_release_text: '',
         },
         components: {
@@ -538,20 +552,23 @@
             switch(siteId) {
               case 0:
                 this.is_home = true;
-                this.is_course = this.is_press_release = this.is_contact = false;
+                this.is_course = this.is_press_release = this.is_contact = this.is_emulator = false;
                 break;
               case 1:
                 this.is_course = true;
-                this.is_home = this.is_press_release = this.is_contact = false;
+                this.is_home = this.is_press_release = this.is_contact = this.is_emulator = false;
                 break;
               case 2:
                 this.is_press_release = true;
-                this.is_home = this.is_course = this.is_contact = false;
+                this.is_home = this.is_course = this.is_contact = this.is_emulator = false;
                 break;
               case 3:
                 this.is_contact = true;
-                this.is_home = this.is_course = this.is_press_release = false;
+                this.is_home = this.is_course = this.is_press_release = this.is_emulator = false;
                 break;
+              case 4:
+              this.is_emulator = true;
+              this.is_home = this.is_course = this.is_press_release = this.is_contact = false;
               default:
                 console.log('Incorrect navigation button pressed');
             }
