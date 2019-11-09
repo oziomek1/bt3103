@@ -1,0 +1,16 @@
+<html>
+<ul><li>Great job so far! Now to the fun part, creating the actual snake. </li><li>There are many instance attributes for our snake class, but we will only focus on the important ones. </li><li>We will start with the <strong>length</strong> and <strong>getLength method</strong> </li></ul>
+<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Snake</span>():</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, ... length....)</span></span>:
+        ...
+        <span class="hljs-keyword">self</span>.length = length
+        ...
+        ]
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getLength</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>.length
+</code></pre><ul><li>The <strong>length</strong> attribute defines how long our snake will be when starting the game. Later, we will be modifying length to keep track of the score </li><li>The <strong>getLength</strong> method simply returns how long the snake is. We will use this to return the score when the game is over </li><li>Remember to call a method, <strong>you must first create an instance of the class (object) and call the method from that</strong>. Like so:</li></ul>
+<pre><code>s = Snake(<span class="hljs-number">5</span>)
+s.getLength()
+<span class="hljs-meta">&gt;&gt;</span> <span class="hljs-number">5</span>
+</code></pre>
+</html>

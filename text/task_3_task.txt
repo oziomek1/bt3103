@@ -1,5 +1,0 @@
-Instructions:
-
-* Add in the length attribute and finish the def getLength method.
-
-* HINT: do not forget to use the keyword self when you are referencing an instance variable. Failure to do so will confuse the code. It will not know which variable you are referencing

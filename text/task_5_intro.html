@@ -1,0 +1,31 @@
+<html>
+<p>Time for a tricky, yet important part of our game: the <strong>def add_cell</strong> method. This method is called every time our snake eats a snack. </p>
+<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Snake</span>():</span>
+...
+...*instance attributes*
+...
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_cell</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
+        <span class="hljs-keyword">self</span>.cells.append(
+            Cell(
+              cell_size=<span class="hljs-keyword">self</span>.cell_size, 
+              x_position=<span class="hljs-keyword">self</span>.cells[-<span class="hljs-number">1</span>].x_position, 
+              y_position=<span class="hljs-keyword">self</span>.cells[-<span class="hljs-number">1</span>].y_position, 
+              color=<span class="hljs-keyword">self</span>.color,
+            )
+        <span class="hljs-keyword">self</span>.length += <span class="hljs-number">1</span>
+</code></pre><p>Let us break down this code. First, recall our Cell class and its instance attributes: </p>
+<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cell</span>():</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(
+      <span class="hljs-keyword">self</span>,
+      cell_size=<span class="hljs-number">20</span>,
+      color=(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>)</span></span>,
+      x_position=None,
+      y_position=None,
+    ):
+
+        <span class="hljs-keyword">self</span>.cell_size = cell_size
+        <span class="hljs-keyword">self</span>.x_position = x_position
+        <span class="hljs-keyword">self</span>.y_position = y_position
+        <span class="hljs-keyword">self</span>.color = color
+</code></pre><p>As you can see in def add_cell, the code actually <strong>creates instances of class Cell and defines its new properties</strong>. It then adds each new instance of class Cell to the <em>cells</em> list, aka <strong>increases the length of the snake</strong></p><p>Here is how the code defines the newly added Cell properties: </p><ul><li>The <strong>new Cell cell_size</strong> will be <strong>the cell size of the snake (self.cell_size)</strong> </li><li>The <strong>new Cell location (x and y position)</strong> will be placed right after the last part of the snake. <strong>Using self.cells[-1].x/y_position</strong> helps the code locate where the snake currently is and where to add the new part of the snake. </li><li>The <strong>new Cell color</strong> will be <strong>the color of the snake (self.color)</strong>  </li></ul><p>Finally, <em>self.length += 1</em> keeps track of how long the length of the snake is. Once the game ends, the length of the snake will be used to display the score. </p>
+</html>

@@ -1,6 +1,0 @@
-** Instructions **
-* Create the Cell class with a cell_size of 30, a color value of (0, 0, 0), and add the display_window variable.
-
-* HINT: in the above code, defined our instance attributes for class Cell in lines 3-7. We can always change those variables from instead of equaling whatever value someone gives it, to a set, default value every time an instance of the class is created
-
-* Reference the problem from the Square class earlier if you forgot how to create a class. 

@@ -76,18 +76,18 @@
         </nav>
         <hr>
         <div v-for="(task, taskIndex) in tasks" v-if="taskIndex === currentPage - 1" class="container col-8 text-center p-5">
-          <div class="card border-dark text-white bg-primary-dark">
+       <!--    <div class="card border-dark">
             <h5 class="card-header">{{ task.content.topic }} </h5>
-            <div class="card-body">
-              <p class="card-text preserve-formatting-text" >{{ task.content.topicDescription }}</p>
-            </div>
-          </div>
+            <div class="card-body"> -->
+              <div id="topic-description" class="preserve-formatting-text" v-html=task.content.topicDescription></div>
+            <!-- </div> -->
+          <!-- </div> -->
           <div class="m-3"></div>
 
           <div class="card border-dark text-white bg-primary-dark-2">
             <h5 class="card-header text-center">{{ task.name }}</h5>
             <div class="card-body">
-              <p class="card-text preserve-formatting-text">{{ task.content.taskDescription }}</p>
+              <div class="card-text preserve-formatting-text" v-html=task.content.taskDescription></div>
             </div>
           </div>
           <div class="m-3"></div>
@@ -179,7 +179,7 @@
                 <div class="col-md-4 col-lg-4 col-sm-12">
                     <div class="card">
                         <div class="card-img">
-                          <img src="../src/images/square.jpg">
+                          <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/square.jpg">
                         </div>
                         <div class="card-body">
                             <h4 class="card-title">Name</h4>
@@ -197,7 +197,7 @@
                 <div class="col-md-4 col-lg-4 col-sm-12">
                     <div class="card">
                         <div class="card-img">
-                          <img src="../src/images/square.jpg">
+                          <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/square.jpg">
                         </div>
                         <div class="card-body">
                             <h4 class="card-title">Name2</h4>
@@ -215,7 +215,7 @@
                 <div class="col-md-4 col-lg-4 col-sm-12">
                     <div class="card">
                         <div class="card-img">
-                          <img src="../src/images/square.jpg">
+                          <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/square.jpg">
                         </div>
                         <div class="card-body">
                             <h4 class="card-title">Name3</h4>
@@ -285,72 +285,9 @@
               <img src='https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/meeting.jpg' alt='OOPython'/>
               <figcaption> Through building a popular video game, Snake, the program aims to help beginner programmers understand OOP.</figcaption>
           </figure>
-          <div class="text-justify">
-          <p>
-          <b> Singapore - Sept. 23, 2019 </b> - NUS-based student group Team Infinity announces OOPython, an Object Oriented Programming (OOP) learning platform for computing students.
-          </p>
-          <p>
-            The application leverages on learning through video games to help students better understand OOP. According to a survey done by the American Psychological Association, nearly 60% of K-12 teachers have used some sort of video games in their classrooms. Programs such as BrainPOP integrates active learning through short readings, videos, and small activities. There are also incentives such as an achievement page and a ranking system among classmates
-          </p>
-          <p>
-            Object-oriented programming is another way of organizing the same properties, methods functions, and events you work with in procedural languages.
-          </p> 
-          <p>
-            The benefits of OOP include: 
-            <ul>
-              <li>organizing projects into consistent and manageable pieces. </li> 
-              <li>introducing structure intended to avoid scaling and maintenance problems</li>
-            </ul>
-            There are a few problems with learning OOP. According to a survey done by the team, over half the students found it difficult to visualize class interactions and output when learning OOP. Almost 90% would like to see what they coded through a video game. OOP at times can be too conceptual. If a teacher does not have students connect the content with examples, they will have a harder time retaining that new knowledge There is also a lot to cover in OOP and a semester to learn it may not be the right amount of time for all students. Some may pick up right away, others may fall behind and never catch up. Some tasks or descriptions might be not designed for every single participant as they might have different background
-          </p>
-          <p>
-            Features of OOPython address problems with understanding OOP: 
-            <ul>
-              <li><b>Instant, visual feedback</b>:  After every lesson, OOPython will run the code beginner programmers input. They can then see how their code impacts how Snake runs and functions.  </li>
-              <li><b>Pacing</b>: OOPython will break down Snake into multiple parts and slowly introduce each concept of OOP. Users can focus on one task at a time. As they complete the game, the application will introduce more concepts to build on. OOPython will also have a reset button if the user wants to relearn/redo code. There will be a hint button per task if the user is stuck  </li>
-              <li><b>Active learning</b>: After introducing a new concept, OOPython will immediately implement it into the game. For example, the program will introduce encapsulation early on. Thus, users will better understand why building a Snake class should include functions such as move() and eat()</li> 
-            </ul>
-            “We saw many year-two computing students lack an understanding of OOP,” explains Jit, lead project manager of OOPython “We chose to use Pygame since most programmers are familiar with Python. However, the benefits of OOP can be applied to multiple coding languages. We hope students can carry what they learned from OOPython beyond the classroom and to their careers”.
-          </p>
-          <p> OOPython will be free to use and available by week 13. There are no additional fees. </p>
-          <p> “Team Infinity’s application addresses the many problems that come with learning OOP,” says Year 3 CS student Carrie Wong. “The ability to go at my own pace gives me time to digest the information, and I can actually see how the game I create comes together. I cannot wait to see what the full version of this app provides”.  </p>
-          <p> OOPython is currently in beta and the full version of the program will be available by week 13. To learn more, please email Team Infinity wedoknowwhatweredoing@gmail.com</p>
-          <div><b>FAQs</b> </div>
-          <p>
-            <b>What if I want to learn only one component of OOP?</b> 
-            <ul> 
-              <li>
-                It is difficult to learn only one component of OOP as many of its concepts are interdependent. 
-              </li>
-              <li> Building Snake will help users understand how said components relate to one another. </li>
-            </ul>
-            <b>What if I want to learn OOP with a different language? </b>
-            <ul>
-              <li>
-                Concepts of OOP will carry over to other languages. We believe the easiest way to learn OOP is through Python.
-              </li>
-            </ul>
-            <b>Why Snake? </b>
-            <ul>
-              <li>
-                Snake is a game most are familiar with. It does not have too many components, but enough to learn the basics concepts of OOP.
-              </li>
-              <li>
-                Snake is also easy to run in the browser. It does not require too much power and has few processing issues 
-              </li>  
-            </ul> 
-            <b>My code runs but the game is still not working properly... </b>
-            <ul>
-              <li> 
-                  Because this is the first version of our application, we may not have all the solutions presented. Please email us with your code and the question you are stuck on wedoknowwhatweredoing@gmail.com
-              </li>
-              <li>
-                  For now, please see our example code per lesson. The more you email us your code, the more solutions we can provide our users!
-              </li>
-            </ul> 
-          </p>
+          <div class="text-justify" v-html=press_release_text>
+          </div>
         </div>
-      </div>
       </div>
 
       <div class="container center" v-else>
@@ -582,6 +519,7 @@
           is_course: false,
           is_contact: false,
           is_press_release: false,
+          press_release_text: '',
         },
         components: {
           myComponent: myComponent,
@@ -590,16 +528,19 @@
           let $vm = this;
 
           for(let i = 0; i < $vm.tasks.length; i++) {
-            this.fetchText($vm.base_github_url + 'text/task_' + (+i + 1) + '_intro.txt').then(function(result) {
+            this.fetchText($vm.base_github_url + 'text/task_' + (+i + 1) + '_intro.html').then(function(result) {
               $vm.tasks[i].content.topicDescription = result;
             });
-            this.fetchText($vm.base_github_url + 'text/task_' + (+i + 1) + '_task.txt').then(function(result) {
+            this.fetchText($vm.base_github_url + 'text/task_' + (+i + 1) + '_task.html').then(function(result) {
               $vm.tasks[i].content.taskDescription = result;
             });
             this.fetchText($vm.base_github_url + 'solution_template/template_' + (+i + 1) + '.py').then(function(result) {
               $vm.tasks[i].content.userInput = result;
             });
           }
+          this.fetchText($vm.base_github_url + 'text/press_release.html').then(function(result) {
+            $vm.press_release_text = result;
+          });
         },
         methods: {
           changeSite: function(siteId) {

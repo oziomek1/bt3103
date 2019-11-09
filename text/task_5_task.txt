@@ -1,5 +1,0 @@
-Instructions:
-
-* Increase the length of the snake by 3 instead of 1 every time the snake eats a snack
-
-* HINT: Remember, self.length references how long our snake is.
