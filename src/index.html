@@ -109,29 +109,28 @@
         </div>
       </div>
 
-      <div class="container text-center" v-else-if = "is_home" >
-          <header class="header ">
-            <div class="container">
-              <div class="description">
-                <h1>
-                  Slithering your way through OOP
-                  <p>
-                  The interactive and fun way of learning Object Oriented Programming</p>
-                  <button class="btn btn-outline-secondary btn-lg nus-orange-button">See more</button>
-                </h1>
-              </div>
-            </div>    
-          </header>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <div class="container text-center" v-else-if = "is_home">
+        <div class="row">
+          <div class="header">
+            <div class="description">
+              <h1>Slithering your way through OOP</h1>
+                <p><b>The interactive and fun way of learning Object Oriented Programming</b></p>
+                <button class="btn btn-outline-secondary btn-lg nus-orange-button">See more</button>
+            </div>
+          </div>    
+
+          <div class="header-separator">
+          </div>
           <div class="about" id="about">
               <div class="container">
                 <h1 class="text-center">Crash Course on ALSET</h1>
                 <div class="row">
-                  <div class="col-lg-4 col-md-4 col-sm-12">
-                    <img src="https://buffer.com/resources/wp-content/uploads/2017/03/Square-Video-vs-Landscape-Video-A-New-Buffer-and-Animoto-Study-1024x669.jpg" class="img-fluid">
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                    <figure>
+                      <img src="https://buffer.com/resources/wp-content/uploads/2017/03/Square-Video-vs-Landscape-Video-A-New-Buffer-and-Animoto-Study-1024x669.jpg" class="img-fluid">
+                    </figure>
                   </div>
-                  <div class="col-lg-8 col-md-8 col-sm-12 desc">
-                    
+                  <div class="col-lg-6 col-md-6 col-sm-12 desc">
                     <h3>Introduction to Object Oriented Programming</h3>
                     <p>
                         It is highly recommended for you go through our OOP crash course to 
@@ -144,108 +143,71 @@
                 </div>
               </div>
             </div>
+          </div>
           <hr>
         
         <!-- Testimonials -->
-        <div class="Testimonials">
+        <div class="testimonials">
           <div class="container">
             <h1 class="text-center"> Users' Stories </h1>
-              <div class="row">
-                <div class="col-md-4 col-lg-4 col-sm-12">
-                    <div class="card">
-                        <div class="card-img">
-                          <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/Eugene.jpg">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Eugene Teu</h4>
-                              <p class="card-text">
-                                Year 2 Computer Science
-                              </p>
-                        </div>
-                        <div class="card-title">
-                          <p class="card-text-test">
-                            A simple and interactive learning platform that let experienced coders, like me, to refresh my memory about any basic OOP concepts that I forgot! 
-                          </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-4 col-sm-12">
-                    <div class="card">
-                        <div class="card-img">
-                          <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/Kai Sheng.jpg">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Kai Sheng</h4>
-                              <p class="card-text">
-                                Year 2 Engineering
-                              </p>
-                        </div>
-                        <div class="card-title">
-                          <p class="card-text-test">
-                            OOPython allows me to learn OOP concepts at my own pace where I feel comfortable making mistakes and keep on trying without the fear of falling behind!
-                          </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-4 col-sm-12">
-                    <div class="card">
-                        <div class="card-img">
-                          <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/square.jpg">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Name3</h4>
-                              <p class="card-text">
-                                Year 1 Business Analytics
-                              </p>
-                        </div>
-                        <div class="card-title">
-                          <p class="card-text-test">
-                            The idea of building a game which is playable despite my limited OOP knowledge motivated me to complete the course and reap the fruits of my labour!
-                          </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-sm-12 testimonial nus-blue-bg">
+                <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/Eugene.jpg" class="img-fluid" alt="team">
+                <h4 class="testimonial-name">Eugene Teu</h4>
+                <h5 class="testimonial-study">Year 2<br/>Computer Science</h5>
+                <div class="testimonial-text">A simple and interactive learning platform that let experienced coders, like me, to refresh my memory about any basic OOP concepts that I forgot!</div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-12 testimonial nus-blue-bg">
+                <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/Kai Sheng.jpg" class="img-fluid" alt="team">
+                <h4 class="testimonial-name">Kai Sheng</h4>
+                <h5 class="testimonial-study">Year 2<br/>Engineering</h5>
+                <div class="testimonial-text">OOPython allows me to learn OOP concepts at my own pace where I feel comfortable making mistakes and keep on trying without the fear of falling behind!</div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-12 testimonial nus-blue-bg">
+                <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/college_student.jpg" class="img-fluid" alt="team">
+                <h4 class="testimonial-name">Anna</h4>
+                <h5 class="testimonial-study">Year 3<br/>Information Management</h5>
+                <div class="testimonial-text">One of the best online course I have found recently! I really like nicely prepared introductions and small programming challenges.</div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-12 testimonial nus-blue-bg">
+                <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/Kai Sheng.jpg" class="img-fluid" alt="team">
+                <h4 class="testimonial-name">Kai Sheng</h4>
+                <h5 class="testimonial-study">Year 2<br/>Engineering</h5>
+                <div class="testimonial-text">OOPython allows me to learn OOP concepts at my own pace where I feel comfortable making mistakes and keep on trying without the fear of falling behind!</div>
               </div>
             </div>
+          </div>
         </div>
 
         <hr>
         <hr>
 
         <!-- Team section -->
-        <div class="team nus-blue-color">
+        <div class="team">
           <div class="container">
             <h1 class="text-center">Our Team</h1>
-          <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-12 item">
-            <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/avenphoto.jpg" class="img-fluid" alt="team">
-            <div class="des">
-              Aven
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-sm-12 item">
+                <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/avenphoto.jpg" class="img-fluid" alt="team">
+                <div class="des">Aven</div>
+                <span class="text-muted text-smaller nus-blue-color">Y2 Business Analytics</span>
               </div>
-            <span class="text-muted nus-blue-color">Y2 Business Analytics</span>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 item">
-            <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/jit Photo.jpeg" class="img-fluid" alt="team">
-            <div class="des">
-                Jit
+              <div class="col-lg-3 col-md-3 col-sm-12 item">
+                <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/jit Photo.jpeg" class="img-fluid" alt="team">
+                <div class="des">Jit</div>
+                <span class="text-muted text-smaller nus-blue-color">Y2 Business Analytcs</span>
               </div>
-            <span class="text-muted nus-blue-color">Y2 Business Analytcs</span>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 item">
-            <img src="https://schoolforinformation.org/wp-content/uploads/2018/09/profile-300x300.png" class="img-fluid" alt="team">
-            <div class="des">
-              Wojtek 
+              <div class="col-lg-3 col-md-3 col-sm-12 item">
+                <img src="https://raw.githubusercontent.com/oziomek1/bt3103/master/src/images/wojciech.jpg" class="img-fluid" alt="team">
+                <div class="des">Wojciech</div>
+                <span class="text-muted text-smaller nus-blue-color">Y5 Computer Science</span>
               </div>
-            <span class="text-muted nus-blue-color">Y5 Computer Science</span>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 item">
-            <img src="https://schoolforinformation.org/wp-content/uploads/2018/09/profile-300x300.png" class="img-fluid" alt="team">
-              <div class="des">
-              Kyle
+              <div class="col-lg-3 col-md-3 col-sm-12 item">
+                <img src="https://schoolforinformation.org/wp-content/uploads/2018/09/profile-300x300.png" class="img-fluid" alt="team">
+                <div class="des">Kyle</div>
+                <span class="text-muted text-smaller nus-blue-color">Y3 Computer Science</span>
               </div>
-            <span class="text-muted nus-blue-color">Y3 Computer Science</span>
             </div>
-          </div>
           </div>
         </div>
       </div>
@@ -770,57 +732,74 @@ li.completion {
 .team .item{
  position: relative;
 }
+
+.item img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
 .team .des{
  background: #EF7C00;
  color: #fff;
  text-align: center;
+ border-radius: 0.25em;
  border-bottom-left-radius: 93%;
  transition:.3s ease-in-out;
- 
 }
+/*
 .team .item:hover .des{
  height: 100%;
  background:#f973007d;
  position: absolute;
- width: 89%;
+ width: 80%;
  padding: 5em;
  top: 0;
  border-bottom-left-radius: 0;
-}
+}*/
 
-.Testimonials{
+.testimonials {
  margin: 4em 0;
  position: relative; 
 }
 
-.Testimonials h1{
+.testimonial {
+ position: relative;
+ color: #fff;
+ padding: 15px;
+ border: 15px solid transparent;
+ background-clip: padding-box;
+ border-radius: 1.5em;
+}
+
+.testimonials h1{
  color:#EF7C00;
  margin: 2em; 
 }
 
-.Testimonials .card{
+.testimonials .card{
  box-shadow: 0 0 20px #ccc;
  box-sizing: border-box;
  background-color: #003d7c;
 }
 
-.Testimonials .card img{
- width: 60%;
- height: 60%;
- border-radius: 50%;
- padding-top: 10px;
+.testimonials img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  padding-top: 10px;
 }
 
-.Testimonials .card-title{
+.testimonials .card-title{
  color:white;  
 }
 
-.Testimonials .card-body{
+.testimonials .card-body{
  padding: 1em;
  color: white;
 }
 
-.Testimonials .card-text-test{
+.testimonials .card-text-test{
  text-align: justify;
  padding-left: 5em;
  padding-right: 5em;
@@ -834,11 +813,16 @@ li.completion {
  background-size: cover;
  background-position: center;
  position: absolute;
- min-height: 80%;
+ min-height: 33em;
  min-width: 100%;
  left: 0;
  top: 50;
 }
+
+.header-separator {
+  margin-bottom: 25em;
+}
+
 .description{
   position: relative;
   top: 30%;
@@ -874,8 +858,8 @@ li.completion {
  margin: 2em;
 }
 .about img{
- height: 80%;
-    width: 90%;
+ height: 100%;
+    width: 80%;
     border-radius: 50%
 }
 .about span{
@@ -886,7 +870,7 @@ li.completion {
 }
 .about .desc{
  padding: 2em;
- border-left:4px solid #10828C;
+ border-left:4px solid #003D7C;
 }
 .about .desc h3{
  color: #003D7C;
