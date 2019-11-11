@@ -1,0 +1,1202 @@
+"solution_id","input","result","task_id","time","user_token"
+"1573283594988","class Square:
+    def __init__(self, cell_size, x_position, y_position):
+        # START CODE HERE
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position","true","1","Sat Nov  9 07:13:14 2019","EXTERNAL"
+"1573288371227","class Square:
+    def __init__(self, ):
+        # START CODE HERE","false","1","Sat Nov  9 08:32:51 2019","EXTERNAL"
+"1573434820333","class Square:
+    def __init__(self, cell_size, x_position, y_position):
+        # START CODE HERE
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position","true","1","Mon Nov 11 01:13:40 2019","EXTERNAL"
+"1573434850474","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0,0,0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        display_window=1,
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window=display_window","true","2","Mon Nov 11 01:14:10 2019","EXTERNAL"
+"1573434857695","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Mon Nov 11 01:14:17 2019","EXTERNAL"
+"1573434915235","class Cell():
+    def __init__(self,cell_size=20,color=(255, 255, 255),x_position=None,y_position=None):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+
+class Snake():
+    def __init__(self, cell_size=20, x_position=0, y_position=0, color=(0, 0, 255), length=3):
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color=color
+        self.length = length
+        self.cells = [
+            Cell(cell_size=self.cell_size, x_position=x_position, y_position=y_position, color=self.color) for i in range(length)]
+
+    def add_cell(self):
+        self.cells.append(
+            Cell(cell_size=self.cell_size, x_position=self.cells[-1].x_position, y_position=self.cells[-1].y_position, color=self.color))
+        # START CODE HERE
+        self.length += 3","true","5","Mon Nov 11 01:15:15 2019","EXTERNAL"
+"1573434935434","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Mon Nov 11 01:15:35 2019","EXTERNAL"
+"1573435168875","class Snake:
+    def __init__(self, x_vector, y_vector):
+        self.x_vector = x_vector
+        self.y_vector = y_vector
+
+    def go_up(self):
+        # START CODE HERE
+        if self.y_vector > 0:
+            return ""Going Up""
+        self.y_vector = 10
+        self.x_vector = 0
+        return","true","4","Mon Nov 11 01:19:28 2019","EXTERNAL"
+"1573436061277","class Snake:
+    def __init__(self, x_vector, y_vector):
+        self.x_vector = x_vector
+        self.y_vector = y_vector
+
+    def go_up(self):
+        # START CODE HERE
+        if self.y_vector > 0:
+            return ""going up""
+        self.y_vector = 10
+        self.x_vector = 0
+        return","false","4","Mon Nov 11 01:34:21 2019","EXTERNAL"
+"1573436065858","class Snake:
+    def __init__(self, x_vector, y_vector):
+        self.x_vector = x_vector
+        self.y_vector = y_vector
+
+    def go_up(self):
+        # START CODE HERE
+        if self.y_vector > 0:
+            return ""Going Up""
+        self.y_vector = 10
+        self.x_vector = 0
+        return","true","4","Mon Nov 11 01:34:25 2019","EXTERNAL"
+"1573436187958","class Snake:
+    def __init__(self, x_vector, y_vector):
+        self.x_vector = x_vector
+        self.y_vector = y_vector
+
+    def go_up(self):
+        # START CODE HERE
+        self.y_vector = 10
+        self.x_vector = 0
+        return","false","4","Mon Nov 11 01:36:27 2019","EXTERNAL"
+"1573436191879","class Snake:
+    def __init__(self, x_vector, y_vector):
+        self.x_vector = x_vector
+        self.y_vector = y_vector
+
+    def go_up(self):
+        # START CODE HERE
+        if self.y_vector > 0:
+            return ""Going Up""
+        self.y_vector = 10
+        self.x_vector = 0
+        return","true","4","Mon Nov 11 01:36:31 2019","EXTERNAL"
+"1573436198879","class Cell():
+    def __init__(self,cell_size=20,color=(255, 255, 255),x_position=None,y_position=None):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+
+class Snake():
+    def __init__(self, cell_size=20, x_position=0, y_position=0, color=(0, 0, 255), length=3):
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color=color
+        self.length = length
+        self.cells = [
+            Cell(cell_size=self.cell_size, x_position=x_position, y_position=y_position, color=self.color) for i in range(length)]
+
+    def add_cell(self):
+        self.cells.append(
+            Cell(cell_size=self.cell_size, x_position=self.cells[-1].x_position, y_position=self.cells[-1].y_position, color=self.color))
+        # START CODE HERE
+        self.length += 1","false","5","Mon Nov 11 01:36:38 2019","EXTERNAL"
+"1573436208219","class Cell():
+    def __init__(self,cell_size=20,color=(255, 255, 255),x_position=None,y_position=None):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+
+class Snake():
+    def __init__(self, cell_size=20, x_position=0, y_position=0, color=(0, 0, 255), length=3):
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color=color
+        self.length = length
+        self.cells = [
+            Cell(cell_size=self.cell_size, x_position=x_position, y_position=y_position, color=self.color) for i in range(length)]
+
+    def add_cell(self):
+        self.cells.append(
+            Cell(cell_size=self.cell_size, x_position=self.cells[-1].x_position, y_position=self.cells[-1].y_position, color=self.color))
+        # START CODE HERE
+        self.length += 3","true","5","Mon Nov 11 01:36:48 2019","EXTERNAL"
+"1573436219216","from abc import ABC, abstractmethod
+
+class playGame(ABC):
+
+    @abstractmethod
+    def show_menu(self):
+        pass
+
+    @abstractmethod
+    def start(self):
+        pass
+
+class detailsOfGame(playGame):
+    # START CODE HERE
+    def show_menu(self):
+        return ""Showing menu""
+
+    def start(self):
+        return ""Starting game!""","true","6","Mon Nov 11 01:36:59 2019","EXTERNAL"
+"1573436222318","from abc import ABC, abstractmethod
+
+class playGame(ABC):
+
+    @abstractmethod
+    def show_menu(self):
+        pass
+
+    @abstractmethod
+    def start(self):
+        pass
+
+class detailsOfGame():
+    # START CODE HERE
+    def show_menu(self):
+        return ""Showing menu""
+
+    def start(self):
+        return ""Starting game!""","true","6","Mon Nov 11 01:37:02 2019","EXTERNAL"
+"1573436234876","from abc import ABC, abstractmethod
+
+class playGame(ABC):
+
+    @abstractmethod
+    def show_menu(self):
+        pass
+
+    @abstractmethod
+    def start(self):
+        pass
+
+class detailsOfGame(playGame):
+    # START CODE HERE
+    def show_menu(self):
+        return ""Showing menu""
+
+    def start(self):
+        return ""Starting game!""","true","6","Mon Nov 11 01:37:14 2019","EXTERNAL"
+"1573436245857","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""move""","false","7","Mon Nov 11 01:37:25 2019","EXTERNAL"
+"1573436257336","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return super().movement()","false","7","Mon Nov 11 01:37:37 2019","EXTERNAL"
+"1573436263078","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Mon Nov 11 01:37:43 2019","EXTERNAL"
+"1573436299379","class Snake:
+    def movement(self):
+        return ""I do not move at all""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return super()","false","7","Mon Nov 11 01:38:19 2019","EXTERNAL"
+"1573436305278","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Mon Nov 11 01:38:25 2019","EXTERNAL"
+"1573436306259","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Mon Nov 11 01:38:26 2019","EXTERNAL"
+"1573436307038","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Mon Nov 11 01:38:27 2019","EXTERNAL"
+"1573436307759","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Mon Nov 11 01:38:27 2019","EXTERNAL"
+"1573436308380","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Mon Nov 11 01:38:28 2019","EXTERNAL"
+"1573436308702","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Mon Nov 11 01:38:28 2019","EXTERNAL"
+"1573436308840","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Mon Nov 11 01:38:28 2019","EXTERNAL"
+"1573436309002","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Mon Nov 11 01:38:28 2019","EXTERNAL"
+"1573436309523","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Mon Nov 11 01:38:29 2019","EXTERNAL"
+"1573436310120","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Mon Nov 11 01:38:30 2019","EXTERNAL"
+"1573436310242","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Mon Nov 11 01:38:30 2019","EXTERNAL"
+"1573436328001","class Square:
+    def __init__(self, cell_size, x_position, y_position):
+        # START CODE HERE","false","1","Mon Nov 11 01:38:47 2019","EXTERNAL"
+"1573436331139","class Square:
+    def __init__(self, cell_size, x_position, y_position):
+        # START CODE HERE
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position","true","1","Mon Nov 11 01:38:51 2019","EXTERNAL"
+"1573436336620","class Square:
+    def __init__(self, cell_size, x_position, y_position):
+        # START CODE HERE
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position","true","1","Mon Nov 11 01:38:56 2019","EXTERNAL"
+"1573436337241","class Square:
+    def __init__(self, cell_size, x_position, y_position):
+        # START CODE HERE
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position","true","1","Mon Nov 11 01:38:57 2019","EXTERNAL"
+"1573436338400","class Square:
+    def __init__(self, cell_size, x_position, y_position):
+        # START CODE HERE
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position","true","1","Mon Nov 11 01:38:58 2019","EXTERNAL"
+"1573436341379","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0,0,0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        display_window=1,
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window=display_window","true","2","Mon Nov 11 01:39:01 2019","EXTERNAL"
+"1573436343500","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0,0,0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        display_window=1,
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window=display_window","true","2","Mon Nov 11 01:39:03 2019","EXTERNAL"
+"1573436345040","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0,0,0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        display_window=1,
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window=display_window","true","2","Mon Nov 11 01:39:05 2019","EXTERNAL"
+"1573436346020","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0,0,0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        display_window=1,
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window=display_window","true","2","Mon Nov 11 01:39:06 2019","EXTERNAL"
+"1573436352761","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0,0,0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        display_window=None,
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window=display_window","false","2","Mon Nov 11 01:39:12 2019","EXTERNAL"
+"1573436359400","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0,0,0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        display_window=[],
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window=display_window","false","2","Mon Nov 11 01:39:19 2019","EXTERNAL"
+"1573436362499","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0,0,0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        display_window=1,
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window=display_window","true","2","Mon Nov 11 01:39:22 2019","EXTERNAL"
+"1573436386720","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0,0,0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        display_window=True,
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window=display_window","true","2","Mon Nov 11 01:39:46 2019","EXTERNAL"
+"1573436395739","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Mon Nov 11 01:39:55 2019","EXTERNAL"
+"1573436397541","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Mon Nov 11 01:39:57 2019","EXTERNAL"
+"1573436410081","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Mon Nov 11 01:40:10 2019","EXTERNAL"
+"1573436410961","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Mon Nov 11 01:40:10 2019","EXTERNAL"
+"1573436411641","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Mon Nov 11 01:40:11 2019","EXTERNAL"
+"1573436412262","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Mon Nov 11 01:40:12 2019","EXTERNAL"
+"1573436421840","class Snake:
+    def __init__(self, x_vector, y_vector):
+        self.x_vector = x_vector
+        self.y_vector = y_vector
+
+    def go_up(self):
+        # START CODE HERE
+        if self.y_vector > 0:
+            return ""Going Up""
+        self.y_vector = 10
+        self.x_vector = 0
+        return","true","4","Mon Nov 11 01:40:21 2019","EXTERNAL"
+"1573436423742","class Cell():
+    def __init__(self,cell_size=20,color=(255, 255, 255),x_position=None,y_position=None):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+
+class Snake():
+    def __init__(self, cell_size=20, x_position=0, y_position=0, color=(0, 0, 255), length=3):
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color=color
+        self.length = length
+        self.cells = [
+            Cell(cell_size=self.cell_size, x_position=x_position, y_position=y_position, color=self.color) for i in range(length)]
+
+    def add_cell(self):
+        self.cells.append(
+            Cell(cell_size=self.cell_size, x_position=self.cells[-1].x_position, y_position=self.cells[-1].y_position, color=self.color))
+        # START CODE HERE
+        self.length += 3","true","5","Mon Nov 11 01:40:23 2019","EXTERNAL"
+"1573436427180","from abc import ABC, abstractmethod
+
+class playGame(ABC):
+
+    @abstractmethod
+    def show_menu(self):
+        pass
+
+    @abstractmethod
+    def start(self):
+        pass
+
+class detailsOfGame(playGame):
+    # START CODE HERE
+    def show_menu(self):
+        return ""Showing menu""
+
+    def start(self):
+        return ""Starting game!""","true","6","Mon Nov 11 01:40:27 2019","EXTERNAL"
+"1573462818797","class Snake:
+    def __init__(self, x_vector, y_vector):
+        self.x_vector = x_vector
+        self.y_vector = y_vector
+
+    def go_up(self):
+        # START CODE HERE","false","4","Mon Nov 11 09:00:18 2019","EXTERNAL"
+"1573490644359","class Square:
+    def __init__(self, ):
+        # START CODE HERE","false","1","Mon Nov 11 16:44:04 2019","hnPdT"
+"1573490653600","class Square:
+    def __init__(self, cell_size, x_position, y_position):
+        # START CODE HERE
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position","true","1","Mon Nov 11 16:44:13 2019","hnPdT"
+"1573491317522","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = (0, 0, 0),
+        color = 30,  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window = True","false","2","Mon Nov 11 16:55:17 2019","hnPdT"
+"1573491337424","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = (0, 0, 0),
+        color = 30,  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        display_window=1,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window = display_window","false","2","Mon Nov 11 16:55:37 2019","hnPdT"
+"1573491369482","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0, 0, 0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window = True","true","2","Mon Nov 11 16:56:09 2019","hnPdT"
+"1573491395083","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0, 0, 0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window = True","true","2","Mon Nov 11 16:56:35 2019","hnPdT"
+"1573491396143","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0, 0, 0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window = True","true","2","Mon Nov 11 16:56:36 2019","hnPdT"
+"1573491397683","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0, 0, 0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window = True","true","2","Mon Nov 11 16:56:37 2019","hnPdT"
+"1573491398222","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0, 0, 0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window = True","true","2","Mon Nov 11 16:56:38 2019","hnPdT"
+"1573491398602","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0, 0, 0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window = True","true","2","Mon Nov 11 16:56:38 2019","hnPdT"
+"1573491398883","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0, 0, 0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window = True","true","2","Mon Nov 11 16:56:38 2019","hnPdT"
+"1573491399623","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0, 0, 0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window = True","true","2","Mon Nov 11 16:56:39 2019","hnPdT"
+"1573491400467","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0, 0, 0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window = True","true","2","Mon Nov 11 16:56:40 2019","hnPdT"
+"1573491400527","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0, 0, 0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window = True","true","2","Mon Nov 11 16:56:40 2019","hnPdT"
+"1573491401215","class Cell():  # we are omitting (Square) to make the code run smoothly
+    def __init__(
+        self,
+        cell_size = 30,
+        color = (0, 0, 0),  #RGB value for the color white
+        x_position=None,
+        y_position=None,
+        # DON'T FORGET TO ADD DISPLAY_WINDOW
+        ):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+        self.display_window = True","true","2","Mon Nov 11 16:56:41 2019","hnPdT"
+"1573491967755","class Snake:
+    def __init__(self, length):
+        # START CODE HERE","false","3","Mon Nov 11 17:06:07 2019","hnPdT"
+"1573491974617","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Mon Nov 11 17:06:14 2019","hnPdT"
+"1573491978316","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Mon Nov 11 17:06:18 2019","hnPdT"
+"1573491978834","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Mon Nov 11 17:06:18 2019","hnPdT"
+"1573491979315","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Mon Nov 11 17:06:19 2019","hnPdT"
+"1573491979957","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Mon Nov 11 17:06:19 2019","hnPdT"
+"1573491982977","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Mon Nov 11 17:06:22 2019","hnPdT"
+"1573492495516","class Snake:
+    def __init__(self, x_vector, y_vector):
+        self.x_vector = x_vector
+        self.y_vector = y_vector
+
+    def go_up(self):
+        # START CODE HERE
+        if self.y_vector > 0:
+            return ""Going Up""
+        self.y_vector = 10
+        self.x_vector = 0
+        return","true","4","Mon Nov 11 17:14:55 2019","hnPdT"
+"1573492500575","class Snake:
+    def __init__(self, x_vector, y_vector):
+        self.x_vector = x_vector
+        self.y_vector = y_vector
+
+    def go_up(self):
+        # START CODE HERE
+        if self.y_vector > 0:
+            return ""Going Up""
+        self.y_vector = 10
+        self.x_vector = 0
+        return","true","4","Mon Nov 11 17:15:00 2019","hnPdT"
+"1573492501095","class Snake:
+    def __init__(self, x_vector, y_vector):
+        self.x_vector = x_vector
+        self.y_vector = y_vector
+
+    def go_up(self):
+        # START CODE HERE
+        if self.y_vector > 0:
+            return ""Going Up""
+        self.y_vector = 10
+        self.x_vector = 0
+        return","true","4","Mon Nov 11 17:15:01 2019","hnPdT"
+"1573492756695","class Cell():
+    def __init__(self,cell_size=20,color=(255, 255, 255),x_position=None,y_position=None):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+
+class Snake():
+    def __init__(self, cell_size=20, x_position=0, y_position=0, color=(0, 0, 255), length=3):
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color=color
+        self.length = length
+        self.cells = [
+            Cell(cell_size=self.cell_size, x_position=x_position, y_position=y_position, color=self.color) for i in range(length)]
+
+    def add_cell(self):
+        self.cells.append(
+            Cell(cell_size=self.cell_size, x_position=self.cells[-1].x_position, y_position=self.cells[-1].y_position, color=self.color))
+        # START CODE HERE
+        self.length += 3","true","5","Mon Nov 11 17:19:16 2019","hnPdT"
+"1573492760534","class Cell():
+    def __init__(self,cell_size=20,color=(255, 255, 255),x_position=None,y_position=None):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+
+class Snake():
+    def __init__(self, cell_size=20, x_position=0, y_position=0, color=(0, 0, 255), length=3):
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color=color
+        self.length = length
+        self.cells = [
+            Cell(cell_size=self.cell_size, x_position=x_position, y_position=y_position, color=self.color) for i in range(length)]
+
+    def add_cell(self):
+        self.cells.append(
+            Cell(cell_size=self.cell_size, x_position=self.cells[-1].x_position, y_position=self.cells[-1].y_position, color=self.color))
+        # START CODE HERE
+        self.length += 3","true","5","Mon Nov 11 17:19:20 2019","hnPdT"
+"1573492761154","class Cell():
+    def __init__(self,cell_size=20,color=(255, 255, 255),x_position=None,y_position=None):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+
+class Snake():
+    def __init__(self, cell_size=20, x_position=0, y_position=0, color=(0, 0, 255), length=3):
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color=color
+        self.length = length
+        self.cells = [
+            Cell(cell_size=self.cell_size, x_position=x_position, y_position=y_position, color=self.color) for i in range(length)]
+
+    def add_cell(self):
+        self.cells.append(
+            Cell(cell_size=self.cell_size, x_position=self.cells[-1].x_position, y_position=self.cells[-1].y_position, color=self.color))
+        # START CODE HERE
+        self.length += 3","true","5","Mon Nov 11 17:19:21 2019","hnPdT"
+"1573492765255","class Cell():
+    def __init__(self,cell_size=20,color=(255, 255, 255),x_position=None,y_position=None):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+
+class Snake():
+    def __init__(self, cell_size=20, x_position=0, y_position=0, color=(0, 0, 255), length=3):
+        self.cell_size = cell_sized
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color=color
+        self.length = length
+        self.cells = [
+            Cell(cell_size=self.cell_size, x_position=x_position, y_position=y_position, color=self.color) for i in range(length)]
+
+    def add_cell(self):
+        self.cells.append(
+            Cell(cell_size=self.cell_size, x_position=self.cells[-1].x_position, y_position=self.cells[-1].y_position, color=self.color))
+        # START CODE HERE
+        self.length += 3","false","5","Mon Nov 11 17:19:25 2019","hnPdT"
+"1573493044056","from abc import ABC, abstractmethod
+
+class playGame(ABC):
+
+    @abstractmethod
+    def show_menu(self):
+        pass
+
+    @abstractmethod
+    def start(self):
+        pass
+
+class detailsOfGame(playGame):
+    # START CODE HERE
+    def show_menu(self):
+        return ""Showing menu""
+
+    def start(self):
+        return ""Starting game!""","true","6","Mon Nov 11 17:24:04 2019","hnPdT"
+"1573493045217","from abc import ABC, abstractmethod
+
+class playGame(ABC):
+
+    @abstractmethod
+    def show_menu(self):
+        pass
+
+    @abstractmethod
+    def start(self):
+        pass
+
+class detailsOfGame(playGame):
+    # START CODE HERE
+    def show_menu(self):
+        return ""Showing menu""
+
+    def start(self):
+        return ""Starting game!""","true","6","Mon Nov 11 17:24:05 2019","hnPdT"
+"1573493047136","from abc import ABC, abstractmethod
+
+class playGame(ABC):
+
+    @abstractmethod
+    def show_menu(self):
+        pass
+
+    @abstractmethod
+    def start(self):
+        pass
+
+class detailsOfGame(playGame):
+    # START CODE HERE
+    def show_menu(self):
+        return ""Showing menu""
+
+    def start(self):
+        return ""Starting game!""","true","6","Mon Nov 11 17:24:07 2019","hnPdT"
+"1573493216134","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Mon Nov 11 17:26:56 2019","hnPdT"
+"1573521890409","class Square:
+    def __init__(self, cell_size, x_position, y_position):
+        # START CODE HERE
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position","true","1","Tue Nov 12 01:24:50 2019","hnPdT"
+"1573521892451","class Square:
+    def __init__(self, cell_size, x_position, y_position):
+        # START CODE HERE
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position","true","1","Tue Nov 12 01:24:52 2019","hnPdT"
+"1573521899189","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Tue Nov 12 01:24:59 2019","hnPdT"
+"1573521906911","class Snake:
+    def __init__(self, length):
+        # START CODE HERE
+        self.length = length
+
+    def getLength(self):
+        return self.length","true","3","Tue Nov 12 01:25:06 2019","hnPdT"
+"1573521912831","class Snake:
+    def __init__(self, x_vector, y_vector):
+        self.x_vector = x_vector
+        self.y_vector = y_vector
+
+    def go_up(self):
+        # START CODE HERE
+        if self.y_vector > 0:
+            return ""Going Up""
+        self.y_vector = 10
+        self.x_vector = 0
+        return","true","4","Tue Nov 12 01:25:12 2019","hnPdT"
+"1573521920190","class Snake:
+    def __init__(self, x_vector, y_vector):
+        self.x_vector = x_vector
+        self.y_vector = y_vector
+
+    def go_up(self):
+        # START CODE HERE
+        if self.y_vector > 0:
+            return ""Going Up""
+        self.y_vector = 10
+        self.x_vector = 0
+        return","true","4","Tue Nov 12 01:25:20 2019","hnPdT"
+"1573521926211","class Cell():
+    def __init__(self,cell_size=20,color=(255, 255, 255),x_position=None,y_position=None):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+
+class Snake():
+    def __init__(self, cell_size=20, x_position=0, y_position=0, color=(0, 0, 255), length=3):
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color=color
+        self.length = length
+        self.cells = [
+            Cell(cell_size=self.cell_size, x_position=x_position, y_position=y_position, color=self.color) for i in range(length)]
+
+    def add_cell(self):
+        self.cells.append(
+            Cell(cell_size=self.cell_size, x_position=self.cells[-1].x_position, y_position=self.cells[-1].y_position, color=self.color))
+        # START CODE HERE
+        self.length += 3","true","5","Tue Nov 12 01:25:26 2019","hnPdT"
+"1573521932791","class Cell():
+    def __init__(self,cell_size=20,color=(255, 255, 255),x_position=None,y_position=None):
+
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color = color
+
+class Snake():
+    def __init__(self, cell_size=20, x_position=0, y_position=0, color=(0, 0, 255), length=3):
+        self.cell_size = cell_size
+        self.x_position = x_position
+        self.y_position = y_position
+        self.color=color
+        self.length = length
+        self.cells = [
+            Cell(cell_size=self.cell_size, x_position=x_position, y_position=y_position, color=self.color) for i in range(length)]
+
+    def add_cell(self):
+        self.cells.append(
+            Cell(cell_size=self.cell_size, x_position=self.cells[-1].x_position, y_position=self.cells[-1].y_position, color=self.color))
+        # START CODE HERE
+        self.length += 3","true","5","Tue Nov 12 01:25:32 2019","hnPdT"
+"1573521938389","from abc import ABC, abstractmethod
+
+class playGame(ABC):
+
+    @abstractmethod
+    def show_menu(self):
+        pass
+
+    @abstractmethod
+    def start(self):
+        pass
+
+class detailsOfGame(playGame):
+    # START CODE HERE
+    def show_menu(self):
+        return ""Showing menu""
+
+    def start(self):
+        return ""Starting game!""","true","6","Tue Nov 12 01:25:38 2019","hnPdT"
+"1573521946390","from abc import ABC, abstractmethod
+
+class playGame(ABC):
+
+    @abstractmethod
+    def show_menu(self):
+        pass
+
+    @abstractmethod
+    def start(self):
+        pass
+
+class detailsOfGame(playGame):
+    # START CODE HERE
+    def show_menu(self):
+        return ""Showing menu""
+
+    def start(self):
+        return ""Starting game!""","true","6","Tue Nov 12 01:25:46 2019","hnPdT"
+"1573521952249","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Tue Nov 12 01:25:52 2019","hnPdT"
+"1573521955049","class Snake:
+    def movement(self):
+        return ""I move in straight lines""
+
+class badSnake(Snake):
+    # START CODE HERE
+    def movement(self):
+        return ""I do not move at all""","true","7","Tue Nov 12 01:25:55 2019","hnPdT"

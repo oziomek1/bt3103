@@ -13,4 +13,4 @@ class Cell():  # we are omitting (Square) to make the code run smoothly
         self.x_position = x_position
         self.y_position = y_position
         self.color = color
-        self.display_window=display_window
+        self.display_window = display_window
