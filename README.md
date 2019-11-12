@@ -20,6 +20,19 @@
   - ##### [Running AWS Lambda build with Github Actions](https://ykab5hzm96.execute-api.us-east-1.amazonaws.com/Prod/)
   - ##### [Source AWS Lambda](https://3x7o2gvbkg.execute-api.us-east-1.amazonaws.com/default/final_lambda_bt3013)
 
+* #### Notebook with analytics:
+Data is stored with every single POST request to our function. Example single input below:
+```
+solution_id - unique Id of entry
+input - user solution for a task
+result - fail or passed output after evaluation
+task_id - Id of a task
+time - Timestamp
+user_token - unique user token taken from achievements. Token from website set to "EXTERNAL"
+```
+
+  - ##### [Analytics notebook](https://colab.research.google.com/drive/1ILk3aiRiOiSH1TYQpFyLvwIsXaxK6xpP)
+
 ## Images:
 * #### Main course page
  <img src="/images/main.png" />
