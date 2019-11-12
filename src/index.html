@@ -67,16 +67,16 @@
           <ul class="pagination justify-content-center">
           <span v-for="(task, taskIndex) in tasks">
             <li class="completion" v-if="isCurrent(taskIndex + 1)">
-              <button type="button" class="btn btn-primary nus-orange-button" @click="currentPage=taskIndex + 1">{{taskIndex + 1}}</button>
+              <button type="button" class="btn btn-primary nus-orange-button" @click="currentPage=taskIndex + 1">{{taskIndex}}</button>
             </li>
             <li class="completion" v-else-if="task.content.output">
-              <button type="button" class="btn btn-success bg-success-dark"  @click="currentPage=taskIndex + 1" class="page-link">{{taskIndex + 1}}</button>
+              <button type="button" class="btn btn-success bg-success-dark"  @click="currentPage=taskIndex + 1" class="page-link">{{taskIndex}}</button>
             </li>
             <li class="completion" v-else-if="task.content.tried">
-              <button type="button" class="btn btn-danger bg-danger-dark"  @click="currentPage=taskIndex + 1" class="page-link">{{taskIndex + 1}}</button>
+              <button type="button" class="btn btn-danger bg-danger-dark"  @click="currentPage=taskIndex + 1" class="page-link">{{taskIndex}}</button>
             </li>
             <li class="completion" v-else>
-              <button type="button" class="btn btn-secondary bg-secondary"  @click="currentPage=taskIndex + 1" class="page-link">{{taskIndex + 1}}</button>
+              <button type="button" class="btn btn-secondary bg-secondary"  @click="currentPage=taskIndex + 1" class="page-link">{{taskIndex}}</button>
             </li>
           </span>
           </ul>
@@ -90,20 +90,23 @@
 
           <div class="card nus-blue-border">
             <div class="card-body">
-              <h2 class="card-title text-center nus-orange-color">{{ task.name }}</h2>
+              <h2 class="card-title text-center nus-orange-color" v-if="!isFirst(currentPage)">{{ task.name }}</h2>
+              <h2 class="card-title text-center nus-orange-color" v-else> Course Content </h2>
               <hr class="card-hr"/>
               <div class="card-text preserve-formatting-text" v-html=task.content.taskDescription></div>
             </div>
           </div>
           <div class="m-3"></div>
-  
-          <course-component v-bind:value=task.content v-bind:task-id=task.content.taskId @handler="evaluateCode"></course-component>
-          <div class="m-3"></div>
-          <div class="alert alert-success task-passed" role="alert" v-if="showPassedTaskAlerts[taskIndex]">
-            Task passed!
-          </div>
-          <div class="alert alert-danger task-failed" role="alert" v-if="showFailedTaskAlerts[taskIndex]">
-            Task failed! Please try again.
+          <div v-if="!isFirst(currentPage)">
+            <course-component v-bind:value=task.content v-bind:task-id=task.content.taskId @handler="evaluateCode"></course-component>
+            <div class="m-3"></div>
+            <div class="alert alert-success task-passed" role="alert" v-if="showPassedTaskAlerts[taskIndex]">
+              Task passed!
+            </div>
+            <button @click="redirectEmulator" id="emulatorButton" class="btn btn-primary nus-orange-button" v-if="allPassed">Try Snake PyGame</button>
+            <div class="alert alert-danger task-failed" role="alert" v-if="showFailedTaskAlerts[taskIndex]">
+              Task failed! Please try again.
+            </div>
           </div>
         </div>
       </div>
@@ -339,7 +342,6 @@
               "hidden": { "0": this.content.taskId },
               "shown": { "0": '' }
             }
-            console.log(JSON.stringify(post_body))
             fetch('', {
               method: 'POST',
               headers: {
@@ -382,121 +384,51 @@
         el: "#app",
         data: {
           tasks: [
-            {
-              name: 'Task 1', 
-              content: {
-                topic: 'Square Class',
-                topicDescription: null,
-                taskDescription: null,
-                userInput: null,
-                taskId: '1',
-                output: false,
-                tried: false,
-              },
-            },
-            {
-              name: 'Task 2', 
-              content: {
-                topic: 'Cell Class',
-                topicDescription: null,
-                taskDescription: null,
-                userInput: defaultInput(),
-                taskId: '2',
-                output: false,
-                tried: false,
-              },
-            },
-            {
-              name: 'Task 3', 
-              content: {
-                topic: 'getLength of Snake',
-                topicDescription: null,
-                taskDescription: null,
-                userInput: defaultInput(),
-                taskId: '3',
-                output: false,
-                tried: false,
-              }
-            },
-            {
-              name: 'Task 4', 
-              content: {
-                topic: 'defining direction',
-                topicDescription: null,
-                taskDescription: null,
-                userInput: defaultInput(),
-                taskId: '4',
-                output: false,
-                tried: false,
-              }
-            },
-            {
-              name: 'Task 5', 
-              content: {
-                topic: 'addCell for Snake',
-                topicDescription: null,
-                taskDescription: null,
-                userInput: defaultInput(),
-                taskId: '5',
-                output: false,
-                tried: false,
-              }
-            },
-            {
-              name: 'Task 6', 
-              content: {
-                topic: 'abstraction and class Play',
-                topicDescription: null,
-                taskDescription: null,
-                userInput: defaultInput(),
-                taskId: '6',
-                output: false,
-                tried: false,
-              }
-            },
-            {
-              name: 'Task 7', 
-              content: {
-                topic: 'Polymorphism of Snake and Snack',
-                topicDescription: null,
-                taskDescription: null,
-                userInput: defaultInput(),
-                taskId: '7',
-                output: false,
-                tried: false,
-              }
-            },
+            taskObject(name='Task 0', topic='Content Page', taskId='0',topicDescription='', taskDescription='', userInput=''),
+            taskObject(name='Task 1', topic='Square Class', taskId='1'),
+            taskObject(name='Task 2', topic='Cell Class', taskId='2'),
+            taskObject(name='Task 3', topic='getLength of Snake', taskId='3'),
+            taskObject(name='Task 4', topic='defining direction', taskId='4'),
+            taskObject(name='Task 5', topic='addCell for Snake', taskId='5'),
+            taskObject(name='Task 6', topic='abstraction and class Play', taskId='6'),
+            taskObject(name='Task 7', topic='Polymorphism of Snake and Snack', taskId='7'),
           ],
           result: '',
           currentPage: 1,
           completePages: [],
-          pages: [...Array(8).keys()].slice(1),
+          pages: 0,
           base_github_url: 'https://raw.githubusercontent.com/oziomek1/bt3103/master/',
-          showPassedTaskAlerts: new Array(7).fill(false),
-          showFailedTaskAlerts: new Array(7).fill(false),
+          showPassedTaskAlerts: [],
+          showFailedTaskAlerts: [],
           is_home: true,
           is_course: false,
           is_contact: false,
           is_press_release: false,
           is_emulator: false,
           press_release_text: '',
+          allPassed: false,
         },
         components: {
           myComponent: myComponent,
         },
         mounted () {
           let $vm = this;
+          $vm.pages = [...Array($vm.tasks.length + 1).keys()].slice(1); 
+          $vm.showPassedTaskAlerts = new Array($vm.tasks.length).fill(false);
+          $vm.showFailedTaskAlerts = new Array($vm.tasks.length).fill(false);
 
           for(let i = 0; i < $vm.tasks.length; i++) {
-            this.fetchText($vm.base_github_url + 'text/task_' + (+i + 1) + '_intro.html').then(function(result) {
+            this.fetchText($vm.base_github_url + 'text/task_' + (+i) + '_intro.html').then(function(result) {
               $vm.tasks[i].content.topicDescription = result;
             });
-            this.fetchText($vm.base_github_url + 'text/task_' + (+i + 1) + '_task.html').then(function(result) {
+            this.fetchText($vm.base_github_url + 'text/task_' + (+i) + '_task.html').then(function(result) {
               $vm.tasks[i].content.taskDescription = result;
             });
-            this.fetchText($vm.base_github_url + 'solution_template/template_' + (+i + 1) + '.py').then(function(result) {
-              $vm.tasks[i].content.userInput = result;
-            });
+            if (i > 0) {
+              this.fetchText($vm.base_github_url + 'solution_template/template_' + (+i) + '.py').then(function(result) {
+                $vm.tasks[i].content.userInput = result;
+              });
+            }
           }
           this.fetchText($vm.base_github_url + 'text/press_release.html').then(function(result) {
             $vm.press_release_text = result;
@@ -548,12 +480,22 @@
             this.tasks[taskId - 1].content.tried = true;
             console.log(this.tasks[taskId - 1].content.output);
             if (this.tasks[taskId - 1].content.output === true) {
-              Vue.set(this.showPassedTaskAlerts, taskId - 1, true);
-              Vue.set(this.showFailedTaskAlerts, taskId - 1, false);
+              Vue.set(this.showPassedTaskAlerts, taskId, true);
+              Vue.set(this.showFailedTaskAlerts, taskId, false);
+              for(let i = 1; i < this.tasks.length; i++) {
+                if (this.tasks[i].content.output == false) {
+                  this.allPassed = false;
+                  break;
+                }
+                this.allPassed = true;
+              }
             } else {
-              Vue.set(this.showPassedTaskAlerts, taskId - 1, false);
-              Vue.set(this.showFailedTaskAlerts, taskId - 1, true);         
+              Vue.set(this.showPassedTaskAlerts, taskId, false);
+              Vue.set(this.showFailedTaskAlerts, taskId, true);         
             }
+          },
+          redirectEmulator: function() {
+            this.changeSite(4);
           },
           async fetchText(url) {
             let response = await fetch(url);
@@ -566,6 +508,21 @@
           }
         }
       });
+
+      function taskObject(name, topic, taskId='0', topicDescription=null, taskDescription=null, userInput=defaultInput(), output=false, tried=false) {
+        return {
+          name: name, 
+          content: {
+            topic: topic,
+            taskId: taskId,
+            topicDescription: topicDescription,
+            taskDescription: taskDescription,
+            userInput: userInput,
+            output: output,
+            tried: tried,
+          }
+        }
+      }
 
       function defaultInput() {
         return '"""\nInput your code here:\n"""';
