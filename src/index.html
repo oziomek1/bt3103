@@ -476,10 +476,10 @@
             let {data, taskId} = response;
             console.log('evaluate:data', data);
             console.log('evaluate:taskId', taskId);
-            this.tasks[taskId - 1].content.output = data.isComplete;
-            this.tasks[taskId - 1].content.tried = true;
-            console.log(this.tasks[taskId - 1].content.output);
-            if (this.tasks[taskId - 1].content.output === true) {
+            this.tasks[taskId].content.output = data.isComplete;
+            this.tasks[taskId].content.tried = true;
+            console.log(this.tasks[taskId].content.output);
+            if (this.tasks[taskId].content.output === true) {
               Vue.set(this.showPassedTaskAlerts, taskId, true);
               Vue.set(this.showFailedTaskAlerts, taskId, false);
               for(let i = 1; i < this.tasks.length; i++) {
@@ -491,7 +491,8 @@
               }
             } else {
               Vue.set(this.showPassedTaskAlerts, taskId, false);
-              Vue.set(this.showFailedTaskAlerts, taskId, true);         
+              Vue.set(this.showFailedTaskAlerts, taskId, true);
+              this.allPassed = false;         
             }
           },
           redirectEmulator: function() {
