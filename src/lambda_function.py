@@ -64,7 +64,7 @@ def lambda_handler(event, context):
         
     def check_correction(user_input, task_id):
         is_correct = False
-        message = ''
+        message = 'Task failed! Please try again.'
         executable_module = execute_input(user_input)
         if executable_module is not None:
             output = test_executor(executable_module, task_id)
@@ -74,9 +74,6 @@ def lambda_handler(event, context):
             elif output == True:
                 is_correct = True
                 message = 'Task passed!'
-            elif output == False:
-                message = 'Task failed! Please try again.'
-                is_correct = True
         return is_correct, message
 
     method = event.get('httpMethod',{})
