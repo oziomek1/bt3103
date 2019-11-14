@@ -101,11 +101,11 @@
             <course-component v-bind:value=task.content v-bind:task-id=task.content.taskId @handler="evaluateCode"></course-component>
             <div class="m-3"></div>
             <div class="alert alert-success task-passed" role="alert" v-if="showPassedTaskAlerts[taskIndex]">
-              Task passed!
+              {{ task.content.outputText }}
             </div>
             <button @click="redirectEmulator" id="emulatorButton" class="btn btn-primary nus-orange-button" v-if="allPassed">Try Snake PyGame</button>
             <div class="alert alert-danger task-failed" role="alert" v-if="showFailedTaskAlerts[taskIndex]">
-              Task failed! Please try again.
+              {{ task.content.outputText }}
             </div>
           </div>
         </div>
@@ -359,7 +359,7 @@
               })
             }).then(data => {
               this.result = JSON.parse(JSON.stringify(data))
-              console.log('data', data, this.value);
+              console.log('data', data, this.result);
               return this.$emit('handler',{data, taskId:this.taskId})
             }).catch(function(err) {
               console.log('Error', err);
@@ -478,6 +478,7 @@
             console.log('evaluate:taskId', taskId);
             this.tasks[taskId].content.output = data.isComplete;
             this.tasks[taskId].content.tried = true;
+            this.tasks[taskId].content.outputText = data.jsonFeedback.message;
             console.log(this.tasks[taskId].content.output);
             if (this.tasks[taskId].content.output === true) {
               Vue.set(this.showPassedTaskAlerts, taskId, true);
@@ -510,7 +511,7 @@
         }
       });
 
-      function taskObject(name, topic, taskId='0', topicDescription=null, taskDescription=null, userInput=defaultInput(), output=false, tried=false) {
+      function taskObject(name, topic, taskId='0', topicDescription=null, taskDescription=null, userInput=defaultInput(), output=false, tried=false, outputText=null) {
         return {
           name: name, 
           content: {
@@ -521,6 +522,7 @@
             userInput: userInput,
             output: output,
             tried: tried,
+            outputText: outputText,
           }
         }
       }

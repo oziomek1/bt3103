@@ -9,36 +9,24 @@ def lambda_handler(event, context):
     status_code_ok = 200
 
     def test_executor(executable_module, task_id):
-        if task_id == "1":
-            try:
+        try:
+            if task_id == "1":
                 _field_value = 3
                 testSquare = executable_module.Square(_field_value, _field_value, _field_value)
                 assert testSquare.cell_size == _field_value, "Something is wrong with cell_size"
                 assert testSquare.x_position == _field_value, "Something is wrong with x_position"
                 assert testSquare.y_position == _field_value, "Something is wrong with y_position"
-            except:
-                return False
-            return True
-        elif task_id == "2":
-            try:
+            elif task_id == "2":
                 _cell_size = 30
                 testCell = executable_module.Cell()
                 assert testCell.cell_size == 30, "Your cell_size is incorrect"
                 assert testCell.color == (0, 0, 0), "Your color is incorrect"
                 assert testCell.display_window, "You did not create a display_window"
-            except:
-                return False
-            return True
-        elif task_id == "3":
-            try:
+            elif task_id == "3":
                 _length = 10
                 snake = executable_module.Snake(_length)
                 assert snake.getLength() == 10, "You did not properly create the getLength method"
-            except:
-                return False
-            return True
-        elif task_id == "4":
-            try:
+            elif task_id == "4":
                 _vector = 10
                 snake = executable_module.Snake(0, _vector)
                 assert snake.go_up() == "Going Up", "You did not properly check if the snake is already moving up. Be sure to return Going Up as well"
@@ -46,34 +34,24 @@ def lambda_handler(event, context):
                 snake2.go_up()
                 assert snake2.x_vector == 0, "Your snake is moving diagonally! Change the x_vector to 0"
                 assert snake2.y_vector == 10, "Your snake is not moving up"
-            except:
-                return False
-            return True
-        elif task_id == "5":
-            try:
+            elif task_id == "5":
                 snake = executable_module.Snake()
                 snake.add_cell()
                 assert snake.length == 6, "You did not properly change the length increment of the snake"
-            except:
-                return False
-            return True
-        elif task_id == "6":
-            try:
+            elif task_id == "6":
                 test = executable_module.detailsOfGame()
                 assert test.show_menu() == "Showing menu", "You did not properly inherit/detail the abstract method show_menu"
                 assert test.start() == "Starting game!", "You did not properly inherit/detail the abstract method start"
-            except:
-                return False
-            return True
-        elif task_id == "7":
-            try:
+            elif task_id == "7":
                 snake = executable_module.badSnake()
                 assert snake.movement() == "I do not move at all", "You did not properly inherit the Snake class"
-            except:
+            else:
                 return False
-            return True
-        else:
+        except AssertionError as e:
+            return str(e)
+        except:
             return False
+        return True
         
     def execute_input(user_input):
         try:
@@ -85,11 +63,21 @@ def lambda_handler(event, context):
             pass
         
     def check_correction(user_input, task_id):
-        result = False
+        is_correct = False
+        message = ''
         executable_module = execute_input(user_input)
         if executable_module is not None:
-            result = test_executor(executable_module, task_id)
-        return result
+            output = test_executor(executable_module, task_id)
+            if isinstance(output, str):
+                message = output
+                is_correct = False
+            elif output == True:
+                is_correct = True
+                message = 'Task passed!'
+            elif output == False:
+                message = 'Task failed! Please try again.'
+                is_correct = True
+        return is_correct, message
 
     method = event.get('httpMethod',{})
     if method == 'GET':
@@ -110,7 +98,7 @@ def lambda_handler(event, context):
             hidden = postReq["hidden"]["0"].strip()
             shown = postReq["shown"]["0"].strip()
             
-            is_correct = check_correction(editable, hidden)
+            is_correct, message = check_correction(editable, hidden)
 
             client = boto3.resource('dynamodb')
             table = client.Table('bt3103-solutions')
@@ -119,6 +107,7 @@ def lambda_handler(event, context):
                     'solution_id': str(round(time.time() * 1000)),
                     'input': editable,
                     'result': is_correct,
+                    'message': message,
                     'user_token': userToken,
                     'task_id': hidden,
                     'time': time.ctime(),
@@ -138,9 +127,9 @@ def lambda_handler(event, context):
         'body': json.dumps(
             {
                 "isComplete": is_correct,
-                "jsonFeedback": { "test": is_correct },
-                "htmlFeedback": "<div>Test: " + str(is_correct) + "</div>",
-                "textFeedback": "Test result: " + str(is_correct),
+                "jsonFeedback": { "test": is_correct, "message": message },
+                "htmlFeedback": "<div>Test: " + str(is_correct) + "</div><br/><div>Message: " + str(message) + "</div>",
+                "textFeedback": "Test: " + str(is_correct) + "  Message: " + str(message),
             }
         )
     }
