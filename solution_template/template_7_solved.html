@@ -1,9 +1,11 @@
-<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Snake</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">movement</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-string">"I move in straight lines"</span>
-
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">badSnake</span>(<span class="hljs-title">Snake</span>):</span>
-    <span class="hljs-comment"># START CODE HERE</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">movement</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-string">"I do not move at all"</span>
+<pre><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">check_collide</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
+    head = <span class="hljs-keyword">self</span>.snake.cells[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">for</span> index, snake_cell <span class="hljs-keyword">in</span> enumerate(<span class="hljs-keyword">self</span>.snake.cells):
+        <span class="hljs-keyword">if</span> snake_cell.x_position &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> snake_cell.x_position &gt;= <span class="hljs-keyword">self</span>.window_width <span class="hljs-keyword">or</span> \
+           snake_cell.y_position &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> snake_cell.y_position &gt;= <span class="hljs-keyword">self</span>.<span class="hljs-symbol">window_height:</span>
+            <span class="hljs-keyword">self</span>.failed = True
+            <span class="hljs-keyword">return</span> 
+        <span class="hljs-keyword">if</span> index &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> snake_cell.x_position == head.x_position <span class="hljs-keyword">and</span> snake_cell.y_position == head.<span class="hljs-symbol">y_position:</span>
+            <span class="hljs-keyword">self</span>.failed = True
+            <span class="hljs-keyword">return</span>
 </code></pre>

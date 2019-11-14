@@ -1,31 +1,51 @@
 <html>
-<p><strong>Adding cell to Snake</strong></p><p>Time for a tricky, yet important part of our game: the <strong>def add_cell</strong> method. This method is called every time our snake eats a snack. </p>
-<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Snake</span>():</span>
-...
-...*instance attributes*
-...
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_cell</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
-        <span class="hljs-keyword">self</span>.cells.append(
+<p><strong>Changing the length of Snake</strong></p><ul><li>Congrats on getting the length of the snake! Now, we can use getLength to calculate our score :)</li><li>Let’s start to do more challenging tasks. We will now create the methods to control the snake. 
+Let’s go over some variables and  methods you should understand before we proceed</li></ul><p><strong>How our snake is displayed on screen</strong> </p><ul><li>Each individual bit of our snake is a Cell Object. These cell objects are stored in a list like so:</li></ul>
+<pre><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>,...)</span></span>:
+        ...
+        <span class="hljs-keyword">self</span>.cells = [
             Cell(
-              cell_size=<span class="hljs-keyword">self</span>.cell_size, 
-              x_position=<span class="hljs-keyword">self</span>.cells[-<span class="hljs-number">1</span>].x_position, 
-              y_position=<span class="hljs-keyword">self</span>.cells[-<span class="hljs-number">1</span>].y_position, 
-              color=<span class="hljs-keyword">self</span>.color,
+                cell_size=<span class="hljs-keyword">self</span>.cell_size, 
+                x_position=x_position, 
+                y_position=y_position, 
+                color=<span class="hljs-keyword">self</span>.color, 
+                display_window=<span class="hljs-keyword">self</span>.display_window,
             )
-        <span class="hljs-keyword">self</span>.length += <span class="hljs-number">1</span>
-</code></pre><p>Let us break down this code. First, recall our Cell class and its instance attributes: </p>
-<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cell</span>():</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(
-      <span class="hljs-keyword">self</span>,
-      cell_size=<span class="hljs-number">20</span>,
-      color=(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>)</span></span>,
-      x_position=None,
-      y_position=None,
-    ):
+       <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(length) ]
+</code></pre><ul>
+<li><em>self.cells</em> is a list creating instances of the class Cell. It will create as many cells as there are defined in length, hence the for loop. </li>
+</ul>
+<pre><code>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">move</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
+        x_position_new, y_position_new = <span class="hljs-keyword">self</span>.calculate_new_cell_positions()
 
-        <span class="hljs-keyword">self</span>.cell_size = cell_size
-        <span class="hljs-keyword">self</span>.x_position = x_position
-        <span class="hljs-keyword">self</span>.y_position = y_position
-        <span class="hljs-keyword">self</span>.color = color
-</code></pre><p>As you can see in def add_cell, the code actually <strong>creates instances of class Cell and defines its new properties</strong>. It then adds each new instance of class Cell to the <em>cells</em> list, aka <strong>increases the length of the snake</strong></p><p>Here is how the code defines the newly added Cell properties: </p><ul><li>The <strong>new Cell cell_size</strong> will be <strong>the cell size of the snake (self.cell_size)</strong> </li><li>The <strong>new Cell location (x and y position)</strong> will be placed right after the last part of the snake. <strong>Using self.cells[-1].x/y_position</strong> helps the code locate where the snake currently is and where to add the new part of the snake. </li><li>The <strong>new Cell color</strong> will be <strong>the color of the snake (self.color)</strong>  </li></ul><p>Finally, <em>self.length += 1</em> keeps track of how long the length of the snake is. Once the game ends, the length of the snake will be used to display the score. </p>
+        <span class="hljs-keyword">self</span>.cells.pop()
+        <span class="hljs-keyword">self</span>.cells.insert(<span class="hljs-number">0</span>,
+            Cell(
+                cell_size=<span class="hljs-keyword">self</span>.cell_size,
+                x_position=x_position_new, 
+                y_position=y_position_new, 
+                color=<span class="hljs-keyword">self</span>.color, 
+                display_window=<span class="hljs-keyword">self</span>.display_window,
+            ),
+        )
+</code></pre><ul><li><p><em>Def move</em> defines how the snake moves along the screen. The method uses the cells list.</p></li><li><p>x_position_new, y_position_new = self.calculate_new_cell_positions() calls another method, which we won’t show because it is too complicated and unnecessary to know, to return new (x, y) coordinates of the snake. </p></li><li>The snake moves by adding the last cell at the tail to the front of the snake, giving it the illusion of movement. This process happens quickly, so the user to make this process look smoother. 
+In coding terms: self.cells.pop() and self.cells.insert() moves the last element to the front of the cells list.   </li></ul><p><strong>Methods:</strong> </p><ul><li>x_vector and y_vector refer to what the vertical and horizontal speed of the snake are. </li><li>Remember, vectors can be <strong>negative</strong>. Negative x and y vectors refer moving left and down respectively </li><li>The snake can move in four directions. In this exercise, <strong>we will give you three directions and you will be responsible for coding the last one.</strong> </li></ul>
+<pre><code>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">go_left</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">self</span>.x_vector &lt; <span class="hljs-number">0</span>:
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-keyword">self</span>.x_vector = -<span class="hljs-number">10</span>
+        <span class="hljs-keyword">self</span>.y_vector = <span class="hljs-number">0</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">go_right</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">self</span>.x_vector &gt; <span class="hljs-number">0</span>:
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-keyword">self</span>.x_vector = <span class="hljs-number">10</span>
+        <span class="hljs-keyword">self</span>.y_vector = <span class="hljs-number">0</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">go_down</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">self</span>.y_vector &lt; <span class="hljs-number">0</span>:
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-keyword">self</span>.y_vector = -<span class="hljs-number">10</span>
+        <span class="hljs-keyword">self</span>.x_vector = <span class="hljs-number">0</span>
+</code></pre><ul><li>These methods change the speed of the snake. The method <em>calculate_new_cell_positions()</em> briefly mentioned earlier will then use these new values to calculate the new position of the snake after it turns. </li><li>The if statements check whether or not the snake is currently moving in the direction the user tries to move it. So for example, <strong>a snake cannot go left if it is already moving left.</strong> </li><li>So for go_left(), if x_vector is negative, or is moving left, then the code won’t run the rest of the method, since the snake is already moving left. Otherwise, it will change the x_vector to a negative value (-10) and keep the y_vector to zero. </li><li>There can only be one nonzero value for the x and y vectors. Otherwise, the snake will move diagonally across the screen.</li><li>These methods change the vectors of the snake. The method calculate_new_cell_positions() briefly mentioned earlier will then use these new vector values to calculate the new position of the snake after it turns. </li></ul>
 </html>

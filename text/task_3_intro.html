@@ -1,16 +1,39 @@
-<html>
-<p><strong>Adding length attribute to Snake</strong></p><ul><li>Great job so far! Now to the fun part, creating the actual snake. </li><li>There are many instance attributes for our snake class, but we will only focus on the important ones. </li><li>We will start with the <strong>length</strong> and <strong>getLength method</strong> </li></ul>
-<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Snake</span>():</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, ... length....)</span></span>:
-        ...
-        <span class="hljs-keyword">self</span>.length = length
-        ...
-        ]
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getLength</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>.length
-</code></pre><ul><li>The <strong>length</strong> attribute defines how long our snake will be when starting the game. Later, we will be modifying length to keep track of the score </li><li>The <strong>getLength</strong> method simply returns how long the snake is. We will use this to return the score when the game is over </li><li>Remember to call a method, <strong>you must first create an instance of the class (object) and call the method from that</strong>. Like so:</li></ul>
-<pre><code>s = Snake(<span class="hljs-number">5</span>)
-s.getLength()
-<span class="hljs-meta">&gt;&gt;</span> <span class="hljs-number">5</span>
-</code></pre>
-</html>
+<p><strong>Class Snack</strong></p>
+<ul>
+<li>Previously, we created Cell class and Square Class.</li>
+<li>We learnt how Cell class <strong>inherited properties and methods</strong> from Square class. </li>
+<li>Now, we will teach you how to <strong>call methods</strong> with objects.</li>
+<li>We will be using the same example as the previous task. </li>
+</ul>
+<p><strong>Basic skeleton of a cell class:</strong> </p>
+<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cell</span>(<span class="hljs-title">Square</span>):</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(
+        <span class="hljs-keyword">self</span>,
+        cell_size=<span class="hljs-number">20</span>,
+        color=(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>)</span></span>,  <span class="hljs-comment">#RGB value for the color white</span>
+        x_position=None,
+        y_position=None,
+        display_window=None):
+
+        <span class="hljs-keyword">self</span>.cell_size = cell_size
+        <span class="hljs-keyword">self</span>.x_position = x_position
+        <span class="hljs-keyword">self</span>.y_position = y_position
+        <span class="hljs-keyword">self</span>.color = color
+        <span class="hljs-keyword">self</span>.display_window = display_window
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">draw</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
+        pg.draw.rect(
+            <span class="hljs-keyword">self</span>.display_window,
+            <span class="hljs-keyword">self</span>.color,
+            pg.Rect(<span class="hljs-keyword">self</span>.x_position, <span class="hljs-keyword">self</span>.y_position, <span class="hljs-keyword">self</span>.cell_size, <span class="hljs-keyword">self</span>.cell_size)
+</code></pre><p><strong>Calling methods with objects</strong></p>
+<pre><code><span class="hljs-keyword">Line</span> <span class="hljs-number">1</span>: exampleCell = Cell()
+<span class="hljs-keyword">Line</span> <span class="hljs-number">2</span>: exampleCell.<span class="hljs-built_in">draw</span>()
+</code></pre><p><strong>Line by line breakdown</strong>  </p>
+<ul>
+<li>To instantiate a class, simply call the class as if it were a function, passing the arguments that the <code>__init__()</code> method requires. The return value will be the newly created object.</li>
+<li>Looking at line 1, we are creating an instance of the Cell class and assigning it to variable exampleCell.</li>
+<li>No parameters were passed into Cell() since the <code>__init__()</code> method for Cell class didn&#39;t require any. </li>
+<li>exampleCell is now an instance of Cell class.</li>
+<li>Looking at line 2, we can now access Cell class methods with exampleCell variable. Hence, we can call draw method with simply calling exampleCell.draw().</li>
+</ul>

@@ -1,6 +1,15 @@
-class Snake:
-    def movement(self):
-        return "I move in straight lines"
+class Cell(self, x_position, y_position):
+  self.x_position = x_position
+  self.y_position = y_position
 
-class badSnake:
-    # START CODE HERE
+class Snake(self):
+  self.cells = []
+
+class Game(self, snake):
+  self.failed = False
+  self.window_width = 100
+  self.window_height = 100
+  self.snake = snake
+
+  def check_collide(self):
+    ##START CODE HERE##

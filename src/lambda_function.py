@@ -23,10 +23,14 @@ def lambda_handler(event, context):
                 assert testCell.color == (0, 0, 0), "Your color is incorrect"
                 assert testCell.display_window, "You did not create a display_window"
             elif task_id == "3":
+                testCell = executable_module.Cell()
+                test = executable_module.Test(testCell)
+                assert test.copy() == "Drawn Successfully", "Your draw method is incorrect."
+            elif task_id == "4":
                 _length = 10
                 snake = executable_module.Snake(_length)
                 assert snake.getLength() == 10, "You did not properly create the getLength method"
-            elif task_id == "4":
+            elif task_id == "5":
                 _vector = 10
                 snake = executable_module.Snake(0, _vector)
                 assert snake.go_up() == "Going Up", "You did not properly check if the snake is already moving up. Be sure to return Going Up as well"
@@ -34,15 +38,45 @@ def lambda_handler(event, context):
                 snake2.go_up()
                 assert snake2.x_vector == 0, "Your snake is moving diagonally! Change the x_vector to 0"
                 assert snake2.y_vector == 10, "Your snake is not moving up"
-            elif task_id == "5":
+            elif task_id == "6":
                 snake = executable_module.Snake()
                 snake.add_cell()
                 assert snake.length == 6, "You did not properly change the length increment of the snake"
-            elif task_id == "6":
+            elif task_id == "7":
+                snake = executable_module.Snake()
+                snake.cells = [executable_module.Cell(0,0), executable_module.Cell(-1,0)]
+                game = executable_module.Game(snake)
+                game.check_collide()
+                assert game.self_failed == True, "One of Snake's cells x_position have a negative value! Check the if-statement!"
+                game.self_failed = False
+                snake.cells = [Cell(0,0), Cell(0,-1)]
+                game.check_collide()
+                assert game.self_failed == True, "One of Snake's cells y_position have a negative value! Check the if-statement! "
+                game.self_failed = False
+                snake.cells = [Cell(0,0), Cell(100,50)]
+                game.check_collide()
+                assert game.self_failed == True, "One of Snake's cells x_position have exceed window_width! Check the if statement!"
+                game.self_failed = False
+                snake.cells = [Cell(0,0), Cell(50,100)]
+                game.check_collide()
+                assert game.self_failed == True, "One of Snake's cells y_position have exceeded window_length! Check the if statement!"
+                game.self_failed = False
+                snake.cells = [Cell(0,0), Cell(0,0)]
+                game.check_collide()
+                assert game.self_failed == True, "The head the snake collided with one part of its body but it wasn/t flagged. Check the second if statement!"
+            elif task_id == "8":
+                testSnack = executable_module.Cell(0,0)
+                testSnack2 = executable_module.Cell(2,2)
+                testSnake = executable_module.Snake()
+                testGame = executable_module.Game(testSnake, testSnack)
+                testGame2 = executable_module.Game(testSnake, testSnack2)
+                assert testGame.check_eat() == True, "If Statement not implemented properly"
+                assert testGame2.check_eat() == False, "Else Statement not implemented properly"
+            elif task_id == "9":
                 test = executable_module.detailsOfGame()
                 assert test.show_menu() == "Showing menu", "You did not properly inherit/detail the abstract method show_menu"
                 assert test.start() == "Starting game!", "You did not properly inherit/detail the abstract method start"
-            elif task_id == "7":
+            elif task_id == "10":
                 snake = executable_module.badSnake()
                 assert snake.movement() == "I do not move at all", "You did not properly inherit the Snake class"
             else:
