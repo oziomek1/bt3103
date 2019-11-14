@@ -1,0 +1,17 @@
+<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cell</span>():  <span class="hljs-comment"># we are omitting (Square) to make the code run smoothly</span></span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span></span>(
+        <span class="hljs-keyword">self</span>,
+        cell_size = <span class="hljs-number">30</span>,
+        color = (<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>),  <span class="hljs-comment">#RGB value for the color white</span>
+        x_position=None,
+        y_position=None,
+        <span class="hljs-comment"># DON'T FORGET TO ADD DISPLAY_WINDOW</span>
+        display_window=<span class="hljs-number">1</span>,
+        ):
+
+        <span class="hljs-keyword">self</span>.cell_size = cell_size
+        <span class="hljs-keyword">self</span>.x_position = x_position
+        <span class="hljs-keyword">self</span>.y_position = y_position
+        <span class="hljs-keyword">self</span>.color = color
+        <span class="hljs-keyword">self</span>.display_window=display_window
+</code></pre>

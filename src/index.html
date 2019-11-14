@@ -107,6 +107,9 @@
             <div class="alert alert-danger task-failed" role="alert" v-if="showFailedTaskAlerts[taskIndex]">
               {{ task.content.outputText }}
             </div>
+            <button @click="task.content.hint = !task.content.hint" id="hintButton" class="btn btn-primary nus-orange-button" v-if="taskFailedAttempts[taskIndex] > 2">Show answer</button>
+            <div class="preserve-formatting-text" v-if="task.content.hint" v-html=task.content.solution>
+            </div>
           </div>
         </div>
       </div>
@@ -400,6 +403,7 @@
           base_github_url: 'https://raw.githubusercontent.com/oziomek1/bt3103/master/',
           showPassedTaskAlerts: [],
           showFailedTaskAlerts: [],
+          taskFailedAttempts: [],
           is_home: true,
           is_course: false,
           is_contact: false,
@@ -416,6 +420,7 @@
           $vm.pages = [...Array($vm.tasks.length + 1).keys()].slice(1); 
           $vm.showPassedTaskAlerts = new Array($vm.tasks.length).fill(false);
           $vm.showFailedTaskAlerts = new Array($vm.tasks.length).fill(false);
+          $vm.taskFailedAttempts = new Array($vm.tasks.length).fill(0);
 
           for(let i = 0; i < $vm.tasks.length; i++) {
             this.fetchText($vm.base_github_url + 'text/task_' + (+i) + '_intro.html').then(function(result) {
@@ -427,6 +432,9 @@
             if (i > 0) {
               this.fetchText($vm.base_github_url + 'solution_template/template_' + (+i) + '.py').then(function(result) {
                 $vm.tasks[i].content.userInput = result;
+              });
+              this.fetchText($vm.base_github_url + 'solution_template/template_' + (+i) + '_solved.html').then(function(result) {
+                $vm.tasks[i].content.solution = result;
               });
             }
           }
@@ -483,6 +491,7 @@
             if (this.tasks[taskId].content.output === true) {
               Vue.set(this.showPassedTaskAlerts, taskId, true);
               Vue.set(this.showFailedTaskAlerts, taskId, false);
+              Vue.set(this.taskFailedAttempts, taskId, 0);
               for(let i = 1; i < this.tasks.length; i++) {
                 if (this.tasks[i].content.output == false) {
                   this.allPassed = false;
@@ -493,7 +502,8 @@
             } else {
               Vue.set(this.showPassedTaskAlerts, taskId, false);
               Vue.set(this.showFailedTaskAlerts, taskId, true);
-              this.allPassed = false;         
+              Vue.set(this.taskFailedAttempts, taskId, this.taskFailedAttempts[taskId] + 1);
+              this.allPassed = false;      
             }
           },
           redirectEmulator: function() {
@@ -511,7 +521,7 @@
         }
       });
 
-      function taskObject(name, topic, taskId='0', topicDescription=null, taskDescription=null, userInput=defaultInput(), output=false, tried=false, outputText=null) {
+      function taskObject(name, topic, taskId='0', topicDescription=null, taskDescription=null, userInput=defaultInput(), output=false, tried=false, outputText=null, solution=null, hint=true) {
         return {
           name: name, 
           content: {
@@ -523,6 +533,8 @@
             output: output,
             tried: tried,
             outputText: outputText,
+            solution: solution,
+            hint: hint,
           }
         }
       }

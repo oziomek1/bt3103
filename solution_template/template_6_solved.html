@@ -1,0 +1,20 @@
+<pre><code><span class="hljs-keyword">from</span> abc <span class="hljs-keyword">import</span> ABC, abstractmethod
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">playGame</span><span class="hljs-params">(ABC)</span>:</span>
+
+<span class="hljs-meta">    @abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">show_menu</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span> 
+
+<span class="hljs-meta">    @abstractmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">start</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span> 
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">detailsOfGame</span><span class="hljs-params">(playGame)</span>:</span>
+    <span class="hljs-comment"># START CODE HERE</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">show_menu</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Showing menu"</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">start</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Starting game!"</span>
+</code></pre>
