@@ -104,11 +104,8 @@
               {{ task.content.outputText }}
             </div>
             <button @click="redirectEmulator" id="emulatorButton" class="btn btn-primary nus-orange-button" v-if="allPassed">Try Snake PyGame</button>
-            <div class="alert alert-danger task-failed" role="alert" v-if="showFailedTaskAlerts[taskIndex] && task.content.outputText !== null">
+            <div class="alert alert-danger task-failed" role="alert" v-if="showFailedTaskAlerts[taskIndex]">
               {{ task.content.outputText }}
-            </div>
-            <div class="alert alert-danger task-failed" role="alert" v-if="showFailedTaskAlerts[taskIndex] && task.content.outputText === null">
-              'Task failed! Please try again.'
             </div>
           </div>
         </div>
