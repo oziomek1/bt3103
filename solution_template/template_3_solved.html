@@ -1,4 +1,5 @@
-<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cell</span>():  <span class="hljs-comment"># we are omitting (Square) to make the code run smoothly</span></span>
+<html>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cell</span>():  <span class="hljs-comment"># we are omitting (Square) to make the code run smoothly</span></span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(
         <span class="hljs-keyword">self</span>,
         cell_size=<span class="hljs-number">20</span>,
@@ -14,13 +15,15 @@
         <span class="hljs-keyword">self</span>.display_window = display_window
 
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">draw</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
-      <span class="hljs-keyword">return</span> <span class="hljs-string">"Drawn Successfully"</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Drawn Successfully"</span>
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span>():</span>
-  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, cell)</span></span>:
-    <span class="hljs-keyword">self</span>.cell = cell
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, cell)</span></span>:
+        <span class="hljs-keyword">self</span>.cell = cell
 
-  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">copy</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
-    <span class="hljs-comment">##START CODE HERE##</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>.cell.draw()
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">copy</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
+        <span class="hljs-comment"># START CODE HERE</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>.cell.draw()
 </code></pre>
+
+</html>

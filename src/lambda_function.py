@@ -47,23 +47,23 @@ def lambda_handler(event, context):
                 snake.cells = [executable_module.Cell(0,0), executable_module.Cell(-1,0)]
                 game = executable_module.Game(snake)
                 game.check_collide()
-                assert game.self_failed == True, "One of Snake's cells x_position have a negative value! Check the if-statement!"
-                game.self_failed = False
-                snake.cells = [Cell(0,0), Cell(0,-1)]
+                assert game.failed == True, "One of Snake's cells x_position have a negative value! Check the if-statement!"
+                game.failed = False
+                snake.cells = [executable_module.Cell(0,0), executable_module.Cell(0,-1)]
                 game.check_collide()
-                assert game.self_failed == True, "One of Snake's cells y_position have a negative value! Check the if-statement! "
-                game.self_failed = False
-                snake.cells = [Cell(0,0), Cell(100,50)]
+                assert game.failed == True, "One of Snake's cells y_position have a negative value! Check the if-statement! "
+                game.failed = False
+                snake.cells = [executable_module.Cell(0,0), executable_module.Cell(100,50)]
                 game.check_collide()
-                assert game.self_failed == True, "One of Snake's cells x_position have exceed window_width! Check the if statement!"
-                game.self_failed = False
-                snake.cells = [Cell(0,0), Cell(50,100)]
+                assert game.failed == True, "One of Snake's cells x_position have exceed window_width! Check the if statement!"
+                game.failed = False
+                snake.cells = [executable_module.Cell(0,0), executable_module.Cell(50,100)]
                 game.check_collide()
-                assert game.self_failed == True, "One of Snake's cells y_position have exceeded window_length! Check the if statement!"
-                game.self_failed = False
-                snake.cells = [Cell(0,0), Cell(0,0)]
+                assert game.failed == True, "One of Snake's cells y_position have exceeded window_length! Check the if statement!"
+                game.failed = False
+                snake.cells = [executable_module.Cell(0,0), executable_module.Cell(0,0)]
                 game.check_collide()
-                assert game.self_failed == True, "The head the snake collided with one part of its body but it wasn/t flagged. Check the second if statement!"
+                assert game.failed == True, "The head the snake collided with one part of its body but it wasn/t flagged. Check the second if statement!"
             elif task_id == "8":
                 testSnack = executable_module.Cell(0,0)
                 testSnack2 = executable_module.Cell(2,2)

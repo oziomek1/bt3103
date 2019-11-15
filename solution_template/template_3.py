@@ -14,11 +14,11 @@ class Cell():  # we are omitting (Square) to make the code run smoothly
         self.display_window = display_window
  
     def draw(self):
-      return "Drawn Successfully"
+        return "Drawn Successfully"
 
 class Test():
-  def __init__(self, cell):
-    self.cell = cell
+    def __init__(self, cell):
+        self.cell = cell
 
-  def copy(self):
-    ##START CODE HERE##
+    def copy(self):
+        # START CODE HERE

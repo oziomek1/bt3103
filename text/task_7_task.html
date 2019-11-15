@@ -1,32 +1,10 @@
-<p><strong>Instructions</strong></p>
-<ul>
-<li>Define the method <em>check_collide</em> which doesn&#39;t take in any parameters other than self. </li>
-<li>Define a variable called <em>head</em> which is the first element in the list called self.snake.cells
+<p><strong>Instructions</strong></p><ul><li>Define the method <em>check_collide</em> which doesn&#39;t take in any parameters other than self. </li><li>Define a variable called <em>head</em> which is the first element in the list called self.snake.cells
 *HINT: Remember that we access the first element in the list by calling listName[0]</li>
 <li><p>An example of the for-loop which incorporates enumerate</p>
 <pre><code><span class="hljs-keyword">for</span> index, snake_cell <span class="hljs-keyword">in</span> enumerate(self<span class="hljs-selector-class">.snake</span><span class="hljs-selector-class">.cells</span>):
-</code></pre><ul>
-<li><em>index</em> here refers to the count for each cell of the body and it starts from 0.</li>
-<li><em>snake_cell</em> is the Cell object that corresponds to the index of the list</li>
-<li>For example if the Game has a Snake object called <em>snake</em> of length 5, using <em>enumerate</em> on <em>snake.cells</em> would assign each cell in snake.cell with an index and the Cell object itself to the variable snake_cell</li>
-</ul>
-</li>
-<li><p>The check_collide() methods would check for 2 conditions</p>
-<ul>
-<li><p>First condition: if the snake collides with the boundary of the game</p>
+</code></pre><ul><li><em>index</em> here refers to the count for each cell of the body and it starts from 0.</li><li><em>snake_cell</em> is the Cell object that corresponds to the index of the list</li><li>For example if the Game has a Snake object called <em>snake</em> of length 5, using <em>enumerate</em> on <em>snake.cells</em> would assign each cell in snake.cell with an index and the Cell object itself to the variable snake_cell</li></ul></li><li><p>The check_collide() methods would check for 2 conditions</p><ul><li><p>First condition: if the snake collides with the boundary of the game</p>
 <pre><code>          <span class="hljs-keyword">if</span> snake_cell<span class="hljs-selector-class">.x_position</span> &lt; <span class="hljs-number">0</span> or snake_cell<span class="hljs-selector-class">.x_position</span> &gt;= self<span class="hljs-selector-class">.window_width</span> or snake_cell<span class="hljs-selector-class">.y_position</span> &lt; <span class="hljs-number">0</span> or snake_cell<span class="hljs-selector-class">.y_position</span> &gt;= self<span class="hljs-selector-class">.window_height</span>:
-</code></pre><ul>
-<li>snake_cell.x_position refers to the x coordinates of the current cell being iterated. If it is less than 0 or greater than window_width it would exceed the screen of the game.</li>
-<li>If the statement is true, we would require you to assign a variable called <em>self.failed</em> to be True and <em>return</em> nothing aftewards.</li>
-</ul>
-</li>
-<li><p>Second condition: if the snake collides with a part of itself</p>
+</code></pre><ul><li>snake_cell.x_position refers to the x coordinates of the current cell being iterated. If it is less than 0 or greater than window_width it would exceed the screen of the game.</li>
+<li>If the statement is true, we would require you to assign a variable called <em>self.failed</em> to be True and <em>return</em> nothing aftewards.</li></ul></li><li><p>Second condition: if the snake collides with a part of itself</p>
 <pre><code>          <span class="hljs-keyword">if</span> index &gt; <span class="hljs-number">0</span> and snake_cell<span class="hljs-selector-class">.x_position</span> == head<span class="hljs-selector-class">.x_position</span> and snake_cell<span class="hljs-selector-class">.y_position</span> == head<span class="hljs-selector-class">.y_position</span>:
-</code></pre><ul>
-<li>index &gt; 0 here specifies that the current cell musn&#39;t be the head of the snake. The next two clauses help to check if the current cell&#39;s position is equal to head&#39;s position. If it is, the snake&#39;s head would have collided with a part of itself. </li>
-<li>If the statement is true, we would require you to assign a variable called <em>self.failed</em> to be True and <em>return</em> nothing aftewards.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+</code></pre><ul><li>index &gt; 0 here specifies that the current cell musn&#39;t be the head of the snake. The next two clauses help to check if the current cell&#39;s position is equal to head&#39;s position. If it is, the snake&#39;s head would have collided with a part of itself. </li><li>If the statement is true, we would require you to assign a variable called <em>self.failed</em> to be True and <em>return</em> nothing aftewards.</li></ul></li></ul></li></ul>

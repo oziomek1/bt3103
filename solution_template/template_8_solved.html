@@ -1,17 +1,23 @@
-<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cell</span>(<span class="hljs-title">self</span>, <span class="hljs-title">x_position</span>, <span class="hljs-title">y_position</span>):</span>
-    <span class="hljs-keyword">self</span>.x_position = x_position
-    <span class="hljs-keyword">self</span>.y_position = y_position
-  
-  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Snake</span>(<span class="hljs-title">self</span>):</span>
-    <span class="hljs-keyword">self</span>.cells = [Cell(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>), Cell(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)]
-  
-  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Game</span>(<span class="hljs-title">self</span>, <span class="hljs-title">snake</span>, <span class="hljs-title">snack</span>):</span>
-    <span class="hljs-keyword">self</span>.snake = snake
-    <span class="hljs-keyword">self</span>.snack = snack
-  
+<html>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cell</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, x_position, y_position)</span></span>:
+        <span class="hljs-keyword">self</span>.x_position = x_position
+        <span class="hljs-keyword">self</span>.y_position = y_position
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Snake</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
+        <span class="hljs-keyword">self</span>.cells = [Cell(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>), Cell(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)]
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Game</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, snake, snack)</span></span>:
+        <span class="hljs-keyword">self</span>.snake = snake
+        <span class="hljs-keyword">self</span>.snack = snack
+
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">check_eat</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
-      <span class="hljs-comment">##START CODE HERE##</span>
-      <span class="hljs-keyword">if</span> <span class="hljs-keyword">self</span>.snake.cells[<span class="hljs-number">0</span>].x_position == <span class="hljs-keyword">self</span>.snack.x_position <span class="hljs-keyword">and</span> <span class="hljs-keyword">self</span>.snake.cells[<span class="hljs-number">0</span>].y_position == <span class="hljs-keyword">self</span>.snack.<span class="hljs-symbol">y_position:</span>
-                <span class="hljs-keyword">return</span> True
-      <span class="hljs-keyword">return</span> False
-  </code></pre>
+        <span class="hljs-comment">##START CODE HERE##</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">self</span>.snake.cells[<span class="hljs-number">0</span>].x_position == <span class="hljs-keyword">self</span>.snack.x_position <span class="hljs-keyword">and</span> <span class="hljs-keyword">self</span>.snake.cells[<span class="hljs-number">0</span>].y_position == <span class="hljs-keyword">self</span>.snack.<span class="hljs-symbol">y_position:</span>
+            <span class="hljs-keyword">return</span> True
+        <span class="hljs-keyword">return</span> False
+</code></pre>
+
+</html>
